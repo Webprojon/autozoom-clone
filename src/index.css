@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-gradient:hover {
+	background: rgb(39, 41, 51);
+	background: linear-gradient(330deg, rgb(29, 30, 36) 54%, rgb(89, 86, 87) 97%);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+.no-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
