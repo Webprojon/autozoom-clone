@@ -6,14 +6,19 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import "swiper/css/scrollbar";
+import { CarImage } from "../../../lib/types";
 
-export default function CarImageGallery({ images }) {
+interface CarImageGalleryProps {
+	images: CarImage[];
+}
+
+export default function CarImageGallery({ images }: CarImageGalleryProps) {
 	const [carImages, setCarImages] = useState(images);
 
-	const handleThumbnailClick = (index) => {
-		const updatedImages = carImages.map((img, i) => ({
+	const handleThumbnailClick = (imgId: number) => {
+		const updatedImages = carImages.map((img: CarImage, index: number) => ({
 			...img,
-			is_main: i === index,
+			is_main: index === imgId,
 		}));
 		setCarImages(updatedImages);
 	};
@@ -29,9 +34,9 @@ export default function CarImageGallery({ images }) {
 				modules={[FreeMode, Mousewheel]}
 			>
 				{carImages.map(
-					(img, index) =>
+					(img: CarImage, index: number) =>
 						!img.is_main && (
-							<SwiperSlide key={index}>
+							<SwiperSlide key={img.id}>
 								<img
 									alt="car thumbnail"
 									onClick={() => handleThumbnailClick(index)}
@@ -45,9 +50,9 @@ export default function CarImageGallery({ images }) {
 
 			<Swiper className="lg:h-[60vh] w-full">
 				{carImages.map(
-					(img, index) =>
+					(img: CarImage) =>
 						img.is_main && (
-							<SwiperSlide key={index}>
+							<SwiperSlide key={img.id}>
 								<img
 									alt="selected car img"
 									className="w-full lg:w-[97%] h-[58%] xs:h-[100%] lg:h-[50vh] object-cover rounded-md"
@@ -60,7 +65,3 @@ export default function CarImageGallery({ images }) {
 		</main>
 	);
 }
-
-//CarImageGallery.propTypes = {
-//	images: PropTypes.arrayOf(PropTypes.string).isRequired,
-//};

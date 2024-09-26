@@ -3,6 +3,8 @@ import { FaTelegram, FaWhatsapp } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { VscSettings } from "react-icons/vsc";
 import { useGlobalContext } from "../../../context/global-context";
+import { scrollTop } from "../../../lib/hooks";
+import { CategoryType } from "../../../lib/types";
 
 export default function CarsRent() {
 	const [checkboxCategories, setCheckboxCategories] = useState([]);
@@ -14,12 +16,6 @@ export default function CarsRent() {
 	const { id } = useParams();
 
 	const carData = data.find((item) => item.id === id);
-
-	const scrollTop = () => {
-		window.scrollTo({
-			top: 0,
-		});
-	};
 
 	const fetchCheckboxData = async () => {
 		try {
@@ -46,7 +42,7 @@ export default function CarsRent() {
 		fetchCheckboxData();
 	}, []);
 
-	const handleChange = (event) => {
+	const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		setSelectedModel(event.target.value);
 	};
 
@@ -56,15 +52,15 @@ export default function CarsRent() {
 
 	// Static data
 	const rentOptions = [
-		{ id: 1, label: "3 DAYS RENT = 5000 AED🔥 ALL INCLUSIVE" },
-		{ id: 2, label: "3 DAYS RENT = 1300 AED🔥 ()" },
-		{ id: 3, label: "3 DAYS RENT = 5000 AED🔥 ALL INCLUSIVE" },
-		{ id: 4, label: "3 DAYS RENT = 1800 AED🔥" },
-		{ id: 5, label: "NO DEPOSIT" },
-		{ id: 6, label: "5000 AED🔥 ALL INCLUSIVE" },
-		{ id: 7, label: "2 DAYS RENT = 5000 AED🔥 ALL INCLUSIVE" },
-		{ id: 8, label: "RENT FERRARI DUBAI" },
-		{ id: 9, label: "4 DAYS RENT = 5000 AED🔥 ALL INCLUSIVE" },
+		{ id: "1", label: "3 DAYS RENT = 5000 AED🔥 ALL INCLUSIVE" },
+		{ id: "2", label: "3 DAYS RENT = 1300 AED🔥 ()" },
+		{ id: "3", label: "3 DAYS RENT = 5000 AED🔥 ALL INCLUSIVE" },
+		{ id: "4", label: "3 DAYS RENT = 1800 AED🔥" },
+		{ id: "5", label: "NO DEPOSIT" },
+		{ id: "6", label: "5000 AED🔥 ALL INCLUSIVE" },
+		{ id: "7", label: "2 DAYS RENT = 5000 AED🔥 ALL INCLUSIVE" },
+		{ id: "8", label: "RENT FERRARI DUBAI" },
+		{ id: "9", label: "4 DAYS RENT = 5000 AED🔥 ALL INCLUSIVE" },
 	];
 
 	{
@@ -159,7 +155,7 @@ export default function CarsRent() {
 
 						<article>
 							<p className="text-[22px] py-3">Car type</p>
-							{checkboxCategories.map((cartype) => (
+							{checkboxCategories.map((cartype: CategoryType) => (
 								<section key={cartype.id} className="flex gap-x-3 mb-2 text-lg">
 									<input id={cartype.id} type="checkbox" />
 									<label htmlFor={cartype.id}>{cartype.name_en}</label>
@@ -169,7 +165,7 @@ export default function CarsRent() {
 
 						<article>
 							<p className="text-[22px] py-3">Brand</p>
-							{checkboxBrands.map((brand) => (
+							{checkboxBrands.map((brand: CategoryType) => (
 								<section key={brand.id} className="flex gap-x-3 mb-2 text-lg">
 									<input id={brand.id} type="checkbox" />
 									<label htmlFor={brand.id}>{brand.title}</label>
@@ -184,8 +180,8 @@ export default function CarsRent() {
 								onChange={handleChange}
 								className="text-black w-full outline-none px-4 py-3 rounded-lg no-scrollbar"
 							>
-								{checkboxModels.map((model, index) => (
-									<option key={index} value={model.name}>
+								{checkboxModels.map((model: CategoryType) => (
+									<option key={model.id} value={model.name}>
 										{model.name}
 									</option>
 								))}

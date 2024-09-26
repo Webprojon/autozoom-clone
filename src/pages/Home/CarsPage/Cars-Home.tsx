@@ -3,13 +3,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../../../context/global-context";
+import { scrollTop } from "../../../lib/hooks";
+import { CategoryType } from "../../../lib/types";
 
 export default function Cars() {
 	// Use Context
 	const { data } = useGlobalContext();
 
 	// One text is incorrect written, so fixing here
-	const CorrectingText = (name) => {
+	const CorrectingText = (name: string) => {
 		if (name.toUpperCase().includes("CONVERTIBLE")) {
 			//return name.replace(name.split("").slice(2, 5).join(""), "mfo"); // not best way
 			return name.replace(name.substring(2, 5), "mfo"); // best way
@@ -18,16 +20,9 @@ export default function Cars() {
 		}
 	};
 
-	// Scrolling to top
-	const scrollTop = () => {
-		window.scrollTo({
-			top: 0,
-		});
-	};
-
 	return (
 		<main className="max-w-[1540px] bg-[#272933]">
-			{data?.map((category) => (
+			{data?.map((category: CategoryType) => (
 				<section
 					key={category.id}
 					className="py-8 max-w-[1248px] mx-auto px-4 md:px-0"
@@ -77,10 +72,10 @@ export default function Cars() {
 								>
 									<Link to={`/carinfo/${car.id}`} onClick={scrollTop}>
 										{car.car_images.map(
-											(img, index) =>
+											(img) =>
 												img.is_main && (
 													<div
-														key={index}
+														key={img.id}
 														className="flex items-center h-[300px]"
 													>
 														<img

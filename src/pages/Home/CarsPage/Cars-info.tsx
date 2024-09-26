@@ -15,10 +15,12 @@ import { FaTelegramPlane, FaWhatsapp } from "react-icons/fa";
 import { useState } from "react";
 import axios from "axios";
 import { useGlobalContext } from "../../../context/global-context";
+import { scrollTop } from "../../../lib/hooks";
+import { Car, CarImage, CategoryType } from "../../../lib/types";
 
 export default function CarDetail() {
 	const [nameValue, setNameValue] = useState("");
-	const [phoneValue, setPhoneValue] = useState();
+	const [phoneValue, setPhoneValue] = useState("");
 	const [periodValue, setPeriodValue] = useState("");
 	const [detailsValue, setDetailsValue] = useState("");
 
@@ -28,15 +30,15 @@ export default function CarDetail() {
 	// Find correct id and return objects
 	const carDetails = data
 		.map((info) => info.cars.find((car) => car.id === String(id)))
-		.filter(Boolean);
+		.filter(Boolean) as Car[];
 
 	// Define category and checking its text,
-	const defineCategory = (categoryId) => {
+	const defineCategory = (categoryId: string) => {
 		const category = data.find((category) => category.id === categoryId);
 		let definedCategory = category ? category.name_en : undefined;
 
 		if (definedCategory && !definedCategory.includes("Cars")) {
-			definedCategory += "Cars";
+			definedCategory += " Cars";
 		}
 		return definedCategory;
 	};
@@ -46,14 +48,7 @@ export default function CarDetail() {
 		return <p>Car not found</p>;
 	}
 
-	// Scrolling to top
-	const scrollTop = () => {
-		window.scrollTo({
-			top: 0,
-		});
-	};
-
-	const sendUserData = (event) => {
+	const sendUserData = (event: React.FormEvent) => {
 		event.preventDefault();
 
 		const token = "6948864577:AAHTh7RO9xCZ6WFKQCle7YqvOnbfcXZIaP4";
@@ -83,13 +78,13 @@ export default function CarDetail() {
 			});
 	};
 
-	const carCards = (car, images) => {
+	const carCards = (car: Car, images: CarImage[]) => {
 		return (
 			<Link to={`/carinfo/${car.id}`} onClick={scrollTop}>
-				{images.map((img, index) => {
+				{images.map((img) => {
 					return (
 						img.is_main && (
-							<section key={index} className="flex items-center h-[200px]">
+							<section key={img.id} className="flex items-center h-[200px]">
 								<img
 									alt="selected car img"
 									className="mx-auto w-[210px]"
@@ -333,7 +328,7 @@ export default function CarDetail() {
 							<h2 className="uppercase text-[28px] mb-4 leading-none font-semibold tracking-wide">
 								Similar Offers
 							</h2>
-							{data?.map((category) => (
+							{data?.map((category: CategoryType) => (
 								<section
 									key={category.id}
 									className="grid xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 py-2"
