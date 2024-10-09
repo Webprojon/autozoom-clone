@@ -17,28 +17,28 @@ export default function CarsRent() {
 
 	const carData = data.find((item) => item.id === id);
 
-	const fetchCheckboxData = async () => {
-		try {
-			const [categoriesResponse, brandsResponse, modelResponse] =
-				await Promise.all([
-					fetch(`https://api.autozoomrental.com/api/categories`),
-					fetch(`https://api.autozoomrental.com/api/brands`),
-					fetch(`https://api.autozoomrental.com/api/models`),
-				]);
-
-			const categoriesData = await categoriesResponse.json();
-			const brandsData = await brandsResponse.json();
-			const modelData = await modelResponse.json();
-
-			setCheckboxCategories(categoriesData.data);
-			setCheckboxBrands(brandsData.data);
-			setCheckboxModels(modelData.data);
-		} catch (error) {
-			console.error("Error fetching data:", error);
-		}
-	};
-
 	useEffect(() => {
+		const fetchCheckboxData = async () => {
+			try {
+				const [categoriesResponse, brandsResponse, modelResponse] =
+					await Promise.all([
+						fetch(`https://api.autozoomrental.com/api/categories`),
+						fetch(`https://api.autozoomrental.com/api/brands`),
+						fetch(`https://api.autozoomrental.com/api/models`),
+					]);
+
+				const categoriesData = await categoriesResponse.json();
+				const brandsData = await brandsResponse.json();
+				const modelData = await modelResponse.json();
+
+				setCheckboxCategories(categoriesData.data);
+				setCheckboxBrands(brandsData.data);
+				setCheckboxModels(modelData.data);
+			} catch (error) {
+				console.error("Error fetching data:", error);
+			}
+		};
+
 		fetchCheckboxData();
 	}, []);
 

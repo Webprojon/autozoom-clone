@@ -15,3 +15,12 @@
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 }
+
+.header-input-bg {
+	background: rgb(19, 20, 26);
+	background: linear-gradient(
+		267deg,
+		rgba(19, 20, 26, 1) 58%,
+		rgba(54, 55, 61, 1) 97%
+	);
+}

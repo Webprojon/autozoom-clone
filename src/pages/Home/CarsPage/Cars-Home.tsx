@@ -21,7 +21,7 @@ export default function Cars() {
 	};
 
 	return (
-		<main className="max-w-[1540px] bg-[#272933]">
+		<main className="bg-[#272933]">
 			{data?.map((category: CategoryType) => (
 				<section
 					key={category.id}
