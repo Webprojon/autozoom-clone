@@ -5,8 +5,8 @@ import CarDetail from "./pages/Home/CarsPage/Cars-info";
 import CarsRent from "./pages/Home/CarsPage/Cars-Rent";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-import Brands from "./pages/Home/BrandPage/Brand";
 import Header from "./components/Header";
+import Home from "./pages/Home/HomePage/Home";
 
 function App() {
 	return (
@@ -14,7 +14,7 @@ function App() {
 			<Provider store={store}>
 				<GlobalContextProvider>
 					<Header />
-					<Brands />
+					<Home />
 					<Routes>
 						<Route path="/" element={<Cars />} />
 						<Route path="/carinfo/:id" element={<CarDetail />} />
