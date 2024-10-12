@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import Header from "./components/Header";
 import Home from "./pages/Home/HomePage/Home";
+import Services from "./pages/Services/Services";
 
 function App() {
 	return (
@@ -15,11 +16,7 @@ function App() {
 				<GlobalContextProvider>
 					<Header />
 					<Home />
-					<Routes>
-						<Route path="/" element={<Cars />} />
-						<Route path="/carinfo/:id" element={<CarDetail />} />
-						<Route path="/cars/:id" element={<CarsRent />} />
-					</Routes>
+				
 				</GlobalContextProvider>
 			</Provider>
 		</main>
