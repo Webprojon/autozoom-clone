@@ -16,7 +16,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useGlobalContext } from "../../../context/global-context";
 import { scrollTop } from "../../../lib/hooks";
-import { Car, CarImage, CategoryType } from "../../../lib/types";
+import { Car, CategoryType } from "../../../lib/types";
 
 export default function CarDetail() {
 	const [nameValue, setNameValue] = useState("");
@@ -76,41 +76,6 @@ export default function CarDetail() {
 			.catch((error) => {
 				console.log(error);
 			});
-	};
-
-	const carCards = (car: Car, images: CarImage[]) => {
-		return (
-			<Link to={`/carinfo/${car.id}`} onClick={scrollTop}>
-				{images.map((img) => {
-					return (
-						img.is_main && (
-							<section key={img.id} className="flex items-center h-[200px]">
-								<img
-									alt="selected car img"
-									className="mx-auto w-[210px]"
-									src={`https://api.autozoomrental.com/api/uploads/images/${img.image.src}`}
-								/>
-							</section>
-						)
-					);
-				})}
-
-				<article className="mt-14">
-					<h3 className="text-[22px] tracking-wider leading-none opacity-95">
-						{car.brand.title} {car.model.name}
-					</h3>
-					<section className="border-t border-zinc-400 my-3 space-x-1">
-						<span className="font-bold text-[20px]">
-							AED {car.price_in_aed}
-						</span>
-						<span className="text-[18px] opacity-65">
-							/ $ {car.price_in_usd}
-						</span>
-					</section>
-					<span className="opacity-65">per day</span>
-				</article>
-			</Link>
-		);
 	};
 
 	return (
@@ -338,7 +303,39 @@ export default function CarDetail() {
 											key={car.id}
 											className="max-w-[400px] w-[100%] mx-auto bg-[#2D2E34] border border-zinc-500 cursor-pointer p-4 text-white rounded-xl"
 										>
-											{carCards(car, car.car_images)}
+											<Link to={`/carinfo/${car.id}`} onClick={scrollTop}>
+												{car.car_images.map((img) => {
+													return (
+														img.is_main && (
+															<section
+																key={img.id}
+																className="flex items-center h-[200px]"
+															>
+																<img
+																	alt="selected car img"
+																	className="mx-auto w-[210px]"
+																	src={`https://api.autozoomrental.com/api/uploads/images/${img.image.src}`}
+																/>
+															</section>
+														)
+													);
+												})}
+
+												<article className="mt-14">
+													<h3 className="text-[22px] tracking-wider leading-none opacity-95">
+														{car.brand.title} {car.model.name}
+													</h3>
+													<section className="border-t border-zinc-400 my-3 space-x-1">
+														<span className="font-bold text-[20px]">
+															AED {car.price_in_aed}
+														</span>
+														<span className="text-[18px] opacity-65">
+															/ $ {car.price_in_usd}
+														</span>
+													</section>
+													<span className="opacity-65">per day</span>
+												</article>
+											</Link>
 										</div>
 									))}
 								</section>

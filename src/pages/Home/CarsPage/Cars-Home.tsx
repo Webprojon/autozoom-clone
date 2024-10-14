@@ -6,7 +6,7 @@ import { useGlobalContext } from "../../../context/global-context";
 import { scrollTop } from "../../../lib/hooks";
 import { CategoryType } from "../../../lib/types";
 
-export default function Cars() {
+export default function CarsHome() {
 	// Use Context
 	const { data } = useGlobalContext();
 
@@ -37,7 +37,9 @@ export default function Cars() {
 								onClick={scrollTop}
 								className="group cursor-pointer flex items-center gap-x-3"
 							>
-								<span className="xs:text-[20px]">SEE ALL</span>
+								<span className="xs:text-[20px] sm:text-[21px] font-medium">
+									SEE ALL
+								</span>
 								<CgChevronRightO className="size-7 group-hover:translate-x-1 transition-all" />
 							</Link>
 						</section>

@@ -1,10 +1,5 @@
 import { CgChevronRightO } from "react-icons/cg";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
-
-interface ArticleProps {
-	bgColor?: string;
-}
 
 export default function Services() {
 	// Static data
@@ -27,12 +22,12 @@ export default function Services() {
 
 	return (
 		<main>
-			<Article bgColor="#1e1f27">
-				<Section>
+			<article className="bg-[#1e1f27] text-white py-10 px-0">
+				<section className="max-w-[1248px] mx-auto tracking-wide">
 					<h1 className="font-medium text-[30px]">SERVICES</h1>
 					<div className="flex gap-x-8 mt-6">
 						{services?.map((service) => (
-							<div className="w-[370px]">
+							<div key={service.title} className="w-[370px]">
 								<img alt="service img" src={service.imgSrc} />
 								<h2 className="my-6 text-[24px] leading-[1.8rem] font-medium">
 									{service.title}
@@ -50,11 +45,11 @@ export default function Services() {
 							</div>
 						))}
 					</div>
-				</Section>
-			</Article>
+				</section>
+			</article>
 
-			<Article bgColor="#272933">
-				<Section>
+			<article className="bg-[#272933] text-white py-10 px-0">
+				<section className="max-w-[1248px] mx-auto tracking-wide">
 					<span className="font-semibold text-[40px]">
 						LUXURY CAR RENTAL IN DUBAI
 					</span>
@@ -94,20 +89,8 @@ export default function Services() {
 						your high social status and please your dearest and nearest!Please
 						avoid smoking inside the rented vehicle.
 					</p>
-				</Section>
-			</Article>
+				</section>
+			</article>
 		</main>
 	);
 }
-
-const Article = styled.article<ArticleProps>`
-	background-color: ${(props) => props.bgColor};
-	color: white;
-	padding: 30px 0 30px 0;
-`;
-
-const Section = styled.section`
-	max-width: 1248px;
-	margin: 0 auto;
-	letter-spacing: 1px;
-`;

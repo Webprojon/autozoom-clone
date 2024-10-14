@@ -26,12 +26,12 @@ export default function CarImageGallery({ images }: CarImageGalleryProps) {
 	return (
 		<main className="flex lg:space-x-5 lg:mb-12">
 			<Swiper
+				spaceBetween={0}
+				slidesPerView={3}
 				mousewheel={true}
 				direction="vertical"
-				slidesPerView={3}
-				className="h-[40vh] lg:h-[50vh] w-[200px] overflow-y-auto no-scrollbar"
-				spaceBetween={0}
 				modules={[FreeMode, Mousewheel]}
+				className="h-[40vh] lg:h-[50vh] w-[200px] overflow-y-auto no-scrollbar"
 			>
 				{carImages.map(
 					(img: CarImage, index: number) =>

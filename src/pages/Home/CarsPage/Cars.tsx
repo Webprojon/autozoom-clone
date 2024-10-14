@@ -1,20 +1,17 @@
-import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { VscSettings } from "react-icons/vsc";
+import { Link } from "react-router-dom";
 import { useGlobalContext } from "../../../context/global-context";
-import { cardDetails, rentOptions } from "../../../lib/hooks";
+import { useEffect, useState } from "react";
 import { CategoryType } from "../../../lib/types";
+import { VscSettings } from "react-icons/vsc";
+import { cardDetails, rentOptions } from "../../../lib/hooks";
 
-export default function CarsRent() {
+export default function Cars() {
 	const [checkboxCategories, setCheckboxCategories] = useState([]);
 	const [checkboxBrands, setCheckboxBrands] = useState([]);
 	const [checkboxModels, setCheckboxModels] = useState([]);
 	const [selectedModel, setSelectedModel] = useState("");
 	const [openFilterOptions, setOpenFilterOptions] = useState(false);
 	const { data } = useGlobalContext();
-	const { id } = useParams();
-
-	const carData = data.find((item) => item.id === id);
 
 	useEffect(() => {
 		const fetchCheckboxData = async () => {
@@ -44,10 +41,6 @@ export default function CarsRent() {
 	const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		setSelectedModel(event.target.value);
 	};
-
-	if (!carData) {
-		return <div>Loading...</div>;
-	}
 
 	return (
 		<main className="max-w-[1540px] bg-[#1E1F27] tracking-wide">
@@ -131,19 +124,21 @@ export default function CarsRent() {
 					<Link to="/" className="opacity-70 text-[15px]">
 						Luxury Cars for Rent in Dubai / Hire the latest supercar
 					</Link>
-
-					<section className="mt-10 grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
-						{carData.cars.map((car) => {
-							return (
+					{data?.map((category: CategoryType) => (
+						<section
+							key={category.id}
+							className="mt-10 grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4"
+						>
+							{category.cars.map((car) => (
 								<section
 									key={car.id}
-									className="mx-auto w-[100%] bg-[#2D2E34] border border-zinc-600 cursor-pointer p-2 rounded-lg"
+									className="max-w-[400px] w-[100%] mx-auto bg-[#2D2E34] border border-zinc-500 cursor-pointer p-4 text-white rounded-xl"
 								>
 									{cardDetails(car, car.id)}
 								</section>
-							);
-						})}
-					</section>
+							))}
+						</section>
+					))}
 				</section>
 			</section>
 		</main>

@@ -9,12 +9,10 @@ import { CgChevronRightO } from "react-icons/cg";
 import axios from "axios";
 import Marquee from "react-fast-marquee";
 import { CategoryType } from "../../../lib/types";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 import FAQPage from "../FAQPage/FAQ";
-import Cars from "../CarsPage/Cars-Home";
-import CarDetail from "../CarsPage/Cars-info";
-import CarsRent from "../CarsPage/Cars-Rent";
 import Services from "../../Services/Services";
+import CarsHome from "../CarsPage/Cars-Home";
 
 export default function Home() {
 	const [brands, setBrands] = useState([]);
@@ -125,9 +123,9 @@ export default function Home() {
 						<section>
 							<Swiper slidesPerView={7}>
 								{brands.map((brand: CategoryType) => (
-									<SwiperSlide>
+									<SwiperSlide key={brand.id}>
 										<Link
-											to={`cars/${brand.id}model`}
+											to={`cars/${brand.id}`}
 											className="flex flex-col justify-center items-center"
 										>
 											<img
@@ -147,11 +145,7 @@ export default function Home() {
 				</Marquee>
 			</main>
 
-			<Routes>
-				<Route path="/" element={<Cars />} />
-				<Route path="/carinfo/:id" element={<CarDetail />} />
-				<Route path="/cars/:id" element={<CarsRent />} />
-			</Routes>
+			<CarsHome />
 			<Services />
 			<FAQPage />
 		</>
