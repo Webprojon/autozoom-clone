@@ -16,6 +16,18 @@ export default function CarsRent() {
 
 	const carData = data.find((item) => item.id === id);
 
+	const filteringCars = data.map((filteredCars) => {
+		return filteredCars.cars.filter((car) => {
+			return car.brand_id === id;
+		});
+	});
+
+	const allData = carData
+		? carData.cars
+		: filteringCars.reduce((acc, item) => {
+				return acc.concat(item);
+		  }, []);
+
 	useEffect(() => {
 		const fetchCheckboxData = async () => {
 			try {
@@ -44,10 +56,6 @@ export default function CarsRent() {
 	const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		setSelectedModel(event.target.value);
 	};
-
-	if (!carData) {
-		return <div>Loading...</div>;
-	}
 
 	return (
 		<main className="max-w-[1540px] bg-[#1E1F27] tracking-wide">
@@ -133,7 +141,7 @@ export default function CarsRent() {
 					</Link>
 
 					<section className="mt-10 grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
-						{carData.cars.map((car) => {
+						{allData.map((car) => {
 							return (
 								<section
 									key={car.id}

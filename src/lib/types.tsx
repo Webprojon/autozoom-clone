@@ -14,6 +14,7 @@ export interface Car {
 	model: {
 		name: string;
 	};
+	brand_id: string;
 	color: string;
 	price_in_aed: number;
 	price_in_usd: number;

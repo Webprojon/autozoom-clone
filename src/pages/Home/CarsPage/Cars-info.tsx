@@ -16,7 +16,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useGlobalContext } from "../../../context/global-context";
 import { scrollTop } from "../../../lib/hooks";
-import { Car, CategoryType } from "../../../lib/types";
+import { Car } from "../../../lib/types";
 
 export default function CarDetail() {
 	const [nameValue, setNameValue] = useState("");
@@ -48,6 +48,18 @@ export default function CarDetail() {
 		return <p>Car not found</p>;
 	}
 
+	// Reduce data
+	const carsData = data.map((items) => {
+		return items.cars.map((item) => {
+			return item;
+		});
+	});
+
+	const reducedCars = carsData.reduce((acc, item) => {
+		return acc.concat(item);
+	}, []);
+
+	// Send message to the bot
 	const sendUserData = (event: React.FormEvent) => {
 		event.preventDefault();
 
@@ -293,53 +305,49 @@ export default function CarDetail() {
 							<h2 className="uppercase text-[28px] mb-4 leading-none font-semibold tracking-wide">
 								Similar Offers
 							</h2>
-							{data?.map((category: CategoryType) => (
-								<section
-									key={category.id}
-									className="grid xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 py-2"
-								>
-									{category.cars.map((car) => (
-										<div
-											key={car.id}
-											className="max-w-[400px] w-[100%] mx-auto bg-[#2D2E34] border border-zinc-500 cursor-pointer p-4 text-white rounded-xl"
-										>
-											<Link to={`/carinfo/${car.id}`} onClick={scrollTop}>
-												{car.car_images.map((img) => {
-													return (
-														img.is_main && (
-															<section
-																key={img.id}
-																className="flex items-center h-[200px]"
-															>
-																<img
-																	alt="selected car img"
-																	className="mx-auto w-[210px]"
-																	src={`https://api.autozoomrental.com/api/uploads/images/${img.image.src}`}
-																/>
-															</section>
-														)
-													);
-												})}
 
-												<article className="mt-14">
-													<h3 className="text-[22px] tracking-wider leading-none opacity-95">
-														{car.brand.title} {car.model.name}
-													</h3>
-													<section className="border-t border-zinc-400 my-3 space-x-1">
-														<span className="font-bold text-[20px]">
-															AED {car.price_in_aed}
-														</span>
-														<span className="text-[18px] opacity-65">
-															/ $ {car.price_in_usd}
-														</span>
-													</section>
-													<span className="opacity-65">per day</span>
-												</article>
-											</Link>
-										</div>
-									))}
-								</section>
-							))}
+							<section className="grid xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 py-2">
+								{reducedCars.map((car) => (
+									<div
+										key={car.id}
+										className="max-w-[400px] w-[100%] mx-auto bg-[#2D2E34] border border-zinc-500 cursor-pointer p-4 text-white rounded-xl"
+									>
+										<Link to={`/carinfo/${car.id}`} onClick={scrollTop}>
+											{car.car_images.map((img) => {
+												return (
+													img.is_main && (
+														<section
+															key={img.id}
+															className="flex items-center h-[200px]"
+														>
+															<img
+																alt="selected car img"
+																className="mx-auto w-[210px]"
+																src={`https://api.autozoomrental.com/api/uploads/images/${img.image.src}`}
+															/>
+														</section>
+													)
+												);
+											})}
+
+											<article className="mt-14">
+												<h3 className="text-[22px] tracking-wider leading-none opacity-95">
+													{car.brand.title} {car.model.name}
+												</h3>
+												<section className="border-t border-zinc-400 my-3 space-x-1">
+													<span className="font-bold text-[20px]">
+														AED {car.price_in_aed}
+													</span>
+													<span className="text-[18px] opacity-65">
+														/ $ {car.price_in_usd}
+													</span>
+												</section>
+												<span className="opacity-65">per day</span>
+											</article>
+										</Link>
+									</div>
+								))}
+							</section>
 						</section>
 					</section>
 				</section>

@@ -42,6 +42,17 @@ export default function Cars() {
 		setSelectedModel(event.target.value);
 	};
 
+	// Reduce car data
+	const carsData = data.map((items) => {
+		return items.cars.map((item) => {
+			return item;
+		});
+	});
+
+	const reducedCars = carsData.reduce((acc, item) => {
+		return acc.concat(item);
+	}, []);
+
 	return (
 		<main className="max-w-[1540px] bg-[#1E1F27] tracking-wide">
 			<section className="text-white flex gap-x-6">
@@ -124,21 +135,17 @@ export default function Cars() {
 					<Link to="/" className="opacity-70 text-[15px]">
 						Luxury Cars for Rent in Dubai / Hire the latest supercar
 					</Link>
-					{data?.map((category: CategoryType) => (
-						<section
-							key={category.id}
-							className="mt-10 grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4"
-						>
-							{category.cars.map((car) => (
-								<section
-									key={car.id}
-									className="max-w-[400px] w-[100%] mx-auto bg-[#2D2E34] border border-zinc-500 cursor-pointer p-4 text-white rounded-xl"
-								>
-									{cardDetails(car, car.id)}
-								</section>
-							))}
-						</section>
-					))}
+
+					<section className="mt-10 grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
+						{reducedCars.map((car) => (
+							<section
+								key={car.id}
+								className="max-w-[400px] w-[100%] mx-auto bg-[#2D2E34] border border-zinc-500 cursor-pointer p-4 text-white rounded-xl"
+							>
+								{cardDetails(car, car.id)}
+							</section>
+						))}
+					</section>
 				</section>
 			</section>
 		</main>

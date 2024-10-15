@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import FAQPage from "../FAQPage/FAQ";
 import Services from "../../Services/Services";
 import CarsHome from "../CarsPage/Cars-Home";
+import { scrollTop } from "../../../lib/hooks";
 
 export default function Home() {
 	const [brands, setBrands] = useState([]);
@@ -126,6 +127,7 @@ export default function Home() {
 									<SwiperSlide key={brand.id}>
 										<Link
 											to={`cars/${brand.id}`}
+											onClick={scrollTop}
 											className="flex flex-col justify-center items-center"
 										>
 											<img
