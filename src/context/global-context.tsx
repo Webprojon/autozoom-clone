@@ -11,6 +11,8 @@ import axios from "axios";
 export interface GlobalContextType {
 	data: CategoryType[];
 	setData: React.Dispatch<React.SetStateAction<CategoryType[]>>;
+	isHovered: boolean;
+	setIsHovered: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
@@ -24,6 +26,7 @@ export const GlobalContextProvider: React.FC<GlobalProviderProps> = ({
 }) => {
 	// Cars Category
 	const [data, setData] = useState<CategoryType[]>([]);
+	const [isHovered, setIsHovered] = useState(true);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -37,7 +40,7 @@ export const GlobalContextProvider: React.FC<GlobalProviderProps> = ({
 	}, []);
 
 	return (
-		<GlobalContext.Provider value={{ data, setData }}>
+		<GlobalContext.Provider value={{ data, setData, isHovered, setIsHovered }}>
 			{children}
 		</GlobalContext.Provider>
 	);

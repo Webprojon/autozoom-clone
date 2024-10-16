@@ -1,7 +1,11 @@
 import { FiSearch } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import Brand from "../pages/Brand/Brand";
+import { useGlobalContext } from "../context/global-context";
 
 export default function Header() {
+	const { isHovered, setIsHovered } = useGlobalContext();
+
 	return (
 		<header className="bg-[#111219] sticky top-0 z-10">
 			<nav className="h-[14vh] flex items-center justify-between max-w-[1248px] mx-auto">
@@ -42,13 +46,22 @@ export default function Header() {
 
 				<div className="text-white uppercase space-x-10 text-[15px] font-medium tracking-wide">
 					<Link to="/cars">Cars</Link>
-					<Link to="/">Brand</Link>
+					<Link
+						className="pb-5"
+						to="/"
+						onMouseEnter={() => setIsHovered(true)}
+						onMouseLeave={() => setIsHovered(false)}
+					>
+						Brand
+					</Link>
 					<Link to="/service">Services</Link>
 					<Link to="/about_us">About us</Link>
 					<Link to="/contact">Contacts</Link>
 					<Link to="/blog">Blog</Link>
 				</div>
 			</nav>
+
+			{isHovered && <Brand />}
 		</header>
 	);
 }
