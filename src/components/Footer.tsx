@@ -61,9 +61,9 @@ export default function Footer() {
 						<section>
 							<div className="uppercase flex flex-col gap-y-3 text-[19px]">
 								<Link to="/blog">Blog</Link>
-								<Link to="/services">Services</Link>
+								<Link to="/service">Services</Link>
 								<Link to="/about_us">About Us</Link>
-								<Link to="/contacts">Contacts</Link>
+								<Link to="/contact">Contacts</Link>
 							</div>
 							<p className="text-[15px] mt-3 text-gray-400">
 								Elite 3 Sports City, Dubai 26W8 24J, <br /> United Arab Emirates

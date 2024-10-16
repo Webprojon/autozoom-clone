@@ -44,3 +44,8 @@ html::-webkit-scrollbar-thumb {
 		rgba(39, 41, 51, 1) 97%
 	);
 }
+
+/* About page img */
+.bg-about-img {
+	background-image: url("https://wallpaper.forfun.com/fetch/24/248a024ceaebe525719d6dfa13c85b6e.jpeg");
+}

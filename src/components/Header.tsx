@@ -42,10 +42,10 @@ export default function Header() {
 
 				<div className="text-white uppercase space-x-10 text-[15px] font-medium tracking-wide">
 					<Link to="/cars">Cars</Link>
-					<Link to="/brands">Brand</Link>
-					<Link to="/services">Services</Link>
+					<Link to="/">Brand</Link>
+					<Link to="/service">Services</Link>
 					<Link to="/about_us">About us</Link>
-					<Link to="/contacts">Contacts</Link>
+					<Link to="/contact">Contacts</Link>
 					<Link to="/blog">Blog</Link>
 				</div>
 			</nav>
