@@ -14,8 +14,8 @@ export const cardDetails = (car: Car, id: string) => {
 	return (
 		<>
 			<Link to={`/carinfo/${id}`} onClick={scrollTop}>
-				{car.car_images.map((img: CarImage) => {
-					return (
+				{car.car_images.map(
+					(img: CarImage) =>
 						img.is_main && (
 							<div key={img.id} className="flex items-center h-[200px]">
 								<img
@@ -24,9 +24,8 @@ export const cardDetails = (car: Car, id: string) => {
 									src={`https://api.autozoomrental.com/api/uploads/images/${img.image.src}`}
 								/>
 							</div>
-						)
-					);
-				})}
+						),
+				)}
 
 				<article className="mt-14">
 					<h3 className="text-[22px] tracking-wider leading-none opacity-95">

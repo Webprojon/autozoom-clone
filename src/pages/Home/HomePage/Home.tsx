@@ -71,7 +71,7 @@ export default function Home() {
 						modules={[EffectCoverflow, Autoplay]}
 						onInit={handleSwiperInit}
 						autoplay={{
-							delay: 3000,
+							delay: 4500,
 							disableOnInteraction: false,
 						}}
 						coverflowEffect={{

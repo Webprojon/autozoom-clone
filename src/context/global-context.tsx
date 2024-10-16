@@ -6,6 +6,7 @@ import {
 	ReactNode,
 } from "react";
 import { CategoryType } from "../lib/types";
+import axios from "axios";
 
 export interface GlobalContextType {
 	data: CategoryType[];
@@ -25,9 +26,14 @@ export const GlobalContextProvider: React.FC<GlobalProviderProps> = ({
 	const [data, setData] = useState<CategoryType[]>([]);
 
 	useEffect(() => {
-		fetch("https://api.autozoomrental.com/api/cars/category")
-			.then((response) => response.json())
-			.then((data) => setData(data.data));
+		const fetchData = async () => {
+			const response = await axios.get(
+				"https://api.autozoomrental.com/api/cars/category",
+			);
+			setData(response.data.data);
+		};
+
+		fetchData();
 	}, []);
 
 	return (

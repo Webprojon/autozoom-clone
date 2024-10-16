@@ -13,6 +13,8 @@ export default function Cars() {
 	const [openFilterOptions, setOpenFilterOptions] = useState(false);
 	const { data } = useGlobalContext();
 
+	const reducedCars = data.flatMap((items) => items.cars);
+
 	useEffect(() => {
 		const fetchCheckboxData = async () => {
 			try {
@@ -41,17 +43,6 @@ export default function Cars() {
 	const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		setSelectedModel(event.target.value);
 	};
-
-	// Reduce car data
-	const carsData = data.map((items) => {
-		return items.cars.map((item) => {
-			return item;
-		});
-	});
-
-	const reducedCars = carsData.reduce((acc, item) => {
-		return acc.concat(item);
-	}, []);
 
 	return (
 		<main className="max-w-[1540px] bg-[#1E1F27] tracking-wide">
@@ -136,7 +127,7 @@ export default function Cars() {
 						Luxury Cars for Rent in Dubai / Hire the latest supercar
 					</Link>
 
-					<section className="mt-10 grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
+					<section className="my-8 grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
 						{reducedCars.map((car) => (
 							<section
 								key={car.id}

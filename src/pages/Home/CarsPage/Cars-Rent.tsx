@@ -15,18 +15,13 @@ export default function CarsRent() {
 	const { id } = useParams();
 
 	const carData = data.find((item) => item.id === id);
-
 	const filteringCars = data.map((filteredCars) => {
 		return filteredCars.cars.filter((car) => {
 			return car.brand_id === id;
 		});
 	});
-
-	const allData = carData
-		? carData.cars
-		: filteringCars.reduce((acc, item) => {
-				return acc.concat(item);
-		  }, []);
+	const filtered = filteringCars.flatMap((item) => item);
+	const allData = carData ? carData.cars : filtered;
 
 	useEffect(() => {
 		const fetchCheckboxData = async () => {
@@ -141,16 +136,14 @@ export default function CarsRent() {
 					</Link>
 
 					<section className="mt-10 grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
-						{allData.map((car) => {
-							return (
-								<section
-									key={car.id}
-									className="mx-auto w-[100%] bg-[#2D2E34] border border-zinc-600 cursor-pointer p-2 rounded-lg"
-								>
-									{cardDetails(car, car.id)}
-								</section>
-							);
-						})}
+						{allData.map((car) => (
+							<section
+								key={car.id}
+								className="mx-auto w-[100%] bg-[#2D2E34] border border-zinc-600 cursor-pointer p-2 rounded-lg"
+							>
+								{cardDetails(car, car.id)}
+							</section>
+						))}
 					</section>
 				</section>
 			</section>
