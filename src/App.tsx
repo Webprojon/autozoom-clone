@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import CarDetail from "./pages/Home/CarsPage/Cars-info";
 import Cars from "./pages/Home/CarsPage/Cars";
 import CarsRent from "./pages/Home/CarsPage/Cars-Rent";
+import Footer from "./components/Footer";
 
 function App() {
 	return (
@@ -19,7 +20,9 @@ function App() {
 						<Route path="/cars" element={<Cars />} />
 						<Route path="/cars/:id" element={<CarsRent />} />
 						<Route path="/carinfo/:id" element={<CarDetail />} />
+						{/*<Route path="/terms_and_conditions" element={<TermCondition />} />*/}
 					</Routes>
+					<Footer />
 				</GlobalContextProvider>
 			</Provider>
 		</main>
