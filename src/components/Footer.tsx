@@ -74,25 +74,25 @@ export default function Footer() {
 						</section>
 
 						<section>
-							<span className="text-[19px]">Follow Us</span>
+							<span className="text-[19px] uppercase">Follow Us</span>
 							<div className="flex gap-x-3 mt-3 text-gray-400">
 								<a
 									href="https://www.instagram.com/autozoomrental/"
 									target="blank"
 								>
-									<FaInstagram className="size-6" />
+									<FaInstagram className="size-7" />
 								</a>
 								<a
 									href="https://www.instagram.com/autozoomrental/"
 									target="blank"
 								>
-									<FaFacebook className="size-5" />
+									<FaFacebook className="size-6" />
 								</a>
 								<a
 									href="https://www.instagram.com/autozoomrental/"
 									target="blank"
 								>
-									<FaYoutube className="size-6" />
+									<FaYoutube className="size-7" />
 								</a>
 							</div>
 						</section>

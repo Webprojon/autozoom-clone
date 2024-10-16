@@ -11,6 +11,8 @@ import Footer from "./components/Footer";
 import Services from "./pages/Services/Services";
 import About from "./pages/About/About";
 import Contact from "./pages/Contacts/Contact";
+import Blog from "./pages/Blog/Blog";
+import TermConditiont from "./pages/TermCondition/TermCondition";
 
 function App() {
 	return (
@@ -26,7 +28,8 @@ function App() {
 						<Route path="/service" element={<Services />} />
 						<Route path="/about_us" element={<About />} />
 						<Route path="/contact" element={<Contact />} />
-						{/*<Route path="/terms_and_conditions" element={<TermCondition />} />*/}
+						<Route path="/blog" element={<Blog />} />
+						<Route path="/terms_and_conditions" element={<TermConditiont />} />
 					</Routes>
 					<Footer />
 				</GlobalContextProvider>
