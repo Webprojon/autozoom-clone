@@ -12,9 +12,14 @@ html::-webkit-scrollbar-thumb {
 	border-radius: 2px;
 }
 
-.bg-gradient:hover {
+.bg-gradient {
 	background: rgb(39, 41, 51);
 	background: linear-gradient(330deg, rgb(29, 30, 36) 54%, rgb(89, 86, 87) 97%);
+}
+
+.bg-gradient:hover {
+	background: rgb(39, 41, 51);
+	background: linear-gradient(150deg, rgb(29, 30, 36) 54%, rgb(89, 86, 87) 97%);
 }
 
 .no-scrollbar::-webkit-scrollbar {

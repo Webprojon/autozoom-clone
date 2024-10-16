@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Header() {
 	return (
-		<header className="bg-[#111219]">
+		<header className="bg-[#111219] sticky top-0 z-10">
 			<nav className="h-[14vh] flex items-center justify-between max-w-[1248px] mx-auto">
 				<section className="flex items-center space-x-9">
 					<div className="flex space-x-4 cursor-pointer">

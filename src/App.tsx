@@ -16,7 +16,7 @@ import TermConditiont from "./pages/TermCondition/TermCondition";
 
 function App() {
 	return (
-		<main className="mx-auto max-w-[1540px]">
+		<main className="mx-auto max-w-[1540px] select-none">
 			<Provider store={store}>
 				<GlobalContextProvider>
 					<Header />

@@ -25,7 +25,7 @@ export default function CarsHome() {
 			{data?.map((category: CategoryType) => (
 				<section
 					key={category.id}
-					className="py-8 max-w-[1248px] mx-auto px-4 md:px-0"
+					className="py-6 max-w-[1248px] mx-auto px-4 md:px-0"
 				>
 					<main>
 						<section className="flex text-white items-center justify-between">
@@ -45,7 +45,7 @@ export default function CarsHome() {
 						</section>
 
 						<Swiper
-							className="mt-10"
+							className="mt-8"
 							spaceBetween={70}
 							slidesPerView={1}
 							breakpoints={{
