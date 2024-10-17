@@ -13,6 +13,7 @@ import About from "./pages/About/About";
 import Contact from "./pages/Contacts/Contact";
 import Blog from "./pages/Blog/Blog";
 import TermConditiont from "./pages/TermCondition/TermCondition";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
 	return (
@@ -30,6 +31,7 @@ function App() {
 						<Route path="/contact" element={<Contact />} />
 						<Route path="/blog" element={<Blog />} />
 						<Route path="/terms_and_conditions" element={<TermConditiont />} />
+						<Route path="*" element={<NotFound />} />
 					</Routes>
 					<Footer />
 				</GlobalContextProvider>

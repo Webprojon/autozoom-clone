@@ -3,6 +3,7 @@ import { useGlobalContext } from "../../context/global-context";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { CategoryType } from "../../lib/types";
+import { scrollTop } from "../../lib/hooks";
 
 export default function Brand() {
 	const { setIsHovered } = useGlobalContext();
@@ -23,6 +24,11 @@ export default function Brand() {
 		fetchData();
 	}, []);
 
+	const handleClickLink = () => {
+		setIsHovered(false);
+		scrollTop();
+	};
+
 	return (
 		<main
 			onMouseEnter={() => setIsHovered(true)}
@@ -34,7 +40,7 @@ export default function Brand() {
 					<Link
 						to={`cars/${brand.id}`}
 						className="flex items-center space-x-3"
-						onClick={() => setIsHovered(false)}
+						onClick={handleClickLink}
 					>
 						<img
 							alt={brand.title}

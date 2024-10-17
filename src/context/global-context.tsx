@@ -26,7 +26,7 @@ export const GlobalContextProvider: React.FC<GlobalProviderProps> = ({
 }) => {
 	// Cars Category
 	const [data, setData] = useState<CategoryType[]>([]);
-	const [isHovered, setIsHovered] = useState(true);
+	const [isHovered, setIsHovered] = useState(false);
 
 	useEffect(() => {
 		const fetchData = async () => {

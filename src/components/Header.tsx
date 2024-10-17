@@ -2,9 +2,50 @@ import { FiSearch } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import Brand from "../pages/Brand/Brand";
 import { useGlobalContext } from "../context/global-context";
+import { useState } from "react";
+import { scrollTop } from "../lib/hooks";
 
 export default function Header() {
 	const { isHovered, setIsHovered } = useGlobalContext();
+	const [activeSection, setActiveSection] = useState("");
+
+	const links = [
+		{
+			id: 1,
+			hash: "/cars",
+			link: "Cars",
+		},
+		{
+			id: 2,
+			hash: "/",
+			link: "Brand",
+		},
+		{
+			id: 3,
+			hash: "/service",
+			link: "Services",
+		},
+		{
+			id: 4,
+			hash: "/about_us",
+			link: "About Us",
+		},
+		{
+			id: 5,
+			hash: "/contact",
+			link: "Contacts",
+		},
+		{
+			id: 6,
+			hash: "/blog",
+			link: "Blogs",
+		},
+	];
+
+	const handleClickLink = (link: string) => {
+		setActiveSection(link);
+		scrollTop();
+	};
 
 	return (
 		<header className="bg-[#111219] sticky top-0 z-10">
@@ -35,7 +76,13 @@ export default function Header() {
 						<FiSearch className="absolute top-1/2 left-2 -translate-y-1/2 size-6" />
 					</div>
 
-					<Link to="/">
+					<Link
+						to="/"
+						onClick={() => {
+							scrollTop();
+							setActiveSection("");
+						}}
+					>
 						<img
 							alt="car rental logo"
 							className="w-[100px]"
@@ -44,21 +91,27 @@ export default function Header() {
 					</Link>
 				</section>
 
-				<div className="text-white uppercase space-x-10 text-[15px] font-medium tracking-wide">
-					<Link to="/cars">Cars</Link>
-					<Link
-						className="pb-5"
-						to="/"
-						onMouseEnter={() => setIsHovered(true)}
-						onMouseLeave={() => setIsHovered(false)}
-					>
-						Brand
-					</Link>
-					<Link to="/service">Services</Link>
-					<Link to="/about_us">About us</Link>
-					<Link to="/contact">Contacts</Link>
-					<Link to="/blog">Blog</Link>
-				</div>
+				<section className="text-white uppercase space-x-10 text-[15px] font-medium tracking-wide">
+					{links.map((link) => (
+						<Link
+							onMouseEnter={() => link.link === "Brand" && setIsHovered(true)}
+							onMouseLeave={() => link.link === "Brand" && setIsHovered(false)}
+							onClick={() => handleClickLink(link.link)}
+							to={link.hash}
+							key={link.id}
+							className={`
+								${
+									link.link === "Brand"
+										? "pb-5 border-none"
+										: `hover:border-b-2 border-red-500 pb-1
+										 ${activeSection === link.link ? "border-b-2 border-red-500 pb-1" : ""}`
+								}  
+								`}
+						>
+							{link.link}
+						</Link>
+					))}
+				</section>
 			</nav>
 
 			{isHovered && <Brand />}

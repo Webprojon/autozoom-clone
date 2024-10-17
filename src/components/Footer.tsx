@@ -26,7 +26,7 @@ export default function Footer() {
 		<footer className="h-[70vh] pt-12 bg-[#111219] text-white">
 			<main className="flex justify-between w-[1248px] mx-auto tracking-wide">
 				<aside className="space-y-8 w-[280px]">
-					<Link to="/">
+					<Link to="/" onClick={scrollTop}>
 						<img
 							alt="logo"
 							className="w-[110px]"
@@ -40,8 +40,11 @@ export default function Footer() {
 						Rent sports and luxury cars directly without intermediaries. Rent a
 						car in Dubai with Auto Zoom Car Rental - safety and driving pleasure
 					</p>
-					<button className="uppercase py-5 px-9 font-medium text-[18px] border rounded-[14px] transition-all hover:bg-[#FE363B] hover:border-none">
-						get best offer
+					<button
+						onClick={scrollTop}
+						className="uppercase py-5 px-9 font-medium text-[18px] border rounded-[14px] transition-all hover:bg-[#FE363B] hover:border-none"
+					>
+						<Link to="/cars">get best offer</Link>
 					</button>
 				</aside>
 
