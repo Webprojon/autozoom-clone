@@ -105,7 +105,9 @@ export default function Footer() {
 						<p>
 							© 2024 Auto Zoom Car Rental. <br /> United Arab Emirates.
 						</p>
-						<Link to="/terms_and_conditions">Terms and Conditions</Link>
+						<Link to="/terms_and_conditions" onClick={scrollTop}>
+							Terms and Conditions
+						</Link>
 					</article>
 				</section>
 			</main>
