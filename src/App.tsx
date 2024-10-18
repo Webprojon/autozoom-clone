@@ -14,6 +14,7 @@ import Contact from "./pages/Contacts/Contact";
 import Blog from "./pages/Blog/Blog";
 import TermConditiont from "./pages/TermCondition/TermCondition";
 import NotFound from "./pages/NotFound/NotFound";
+import ServiceDetail from "./pages/Services/Service-Detail";
 
 function App() {
 	return (
@@ -27,6 +28,7 @@ function App() {
 						<Route path="/cars/:id" element={<CarsRent />} />
 						<Route path="/carinfo/:id" element={<CarDetail />} />
 						<Route path="/service" element={<Services />} />
+						<Route path="/service/:id" element={<ServiceDetail />} />
 						<Route path="/about_us" element={<About />} />
 						<Route path="/contact" element={<Contact />} />
 						<Route path="/blog" element={<Blog />} />

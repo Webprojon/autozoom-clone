@@ -31,22 +31,24 @@ export default function TermConditiont() {
 	return (
 		<main className="bg-[#1E1F27]">
 			<article className="w-[1248px] mx-auto text-white py-6 font-medium">
-				<h1 className="mb-4 leading-none text-[29px] font-medium">TERMS AND CONDITIONS</h1>
+				<h1 className="mb-4 leading-none text-[29px] font-medium">
+					TERMS AND CONDITIONS
+				</h1>
 				<section className="space-y-6">
-					<span className="text-[17px] text-gray-200 tracking-tighter">
+					<p className="text-[17px] text-gray-200 tracking-tighter">
 						The Lessor mentioned overleaf, called Auto Zoom Car Rental, hereby
 						rents vehicle identified overleaf to Renter subject to all terms and
 						conditions on the front page and this page and the Renter, on
 						consideration thereof agrees to them as the essence of the
 						agreement.
-					</span>
+					</p>
 
 					{termsAndConditions.map((term) => (
 						<section key={term.title}>
-							<p className="text-[22px] font-bold">{term.title}</p>
-							<span className="text-gray-200 tracking-tighter text-[17px]">
+							<h2 className="text-[22px] font-bold">{term.title}</h2>
+							<p className="text-gray-200 tracking-tighter text-[17px]">
 								{term.description}
-							</span>
+							</p>
 						</section>
 					))}
 				</section>

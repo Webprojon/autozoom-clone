@@ -1,10 +1,12 @@
 import { CgChevronRightO } from "react-icons/cg";
 import { Link } from "react-router-dom";
+import { scrollTop } from "../../lib/hooks";
 
 export default function Services() {
 	// Static data
 	const services = [
 		{
+			id: 1,
 			imgSrc:
 				"https://www.autozoomrental.com/static/media/sercardimg1.40892caaec9bfa3d404a.jpg",
 			title: "Sports Car Rental Dubai Style Tour in Dubai",
@@ -12,6 +14,7 @@ export default function Services() {
 				"Experience the thrill of a dune buggy tour in Dubai with us. We offer free hotel pick-up & drop-off service. Book now!",
 		},
 		{
+			id: 2,
 			imgSrc:
 				"https://www.autozoomrental.com/static/media/sercardiimg2.79fb9209cbfcc61c8c65.jpg",
 			title: "Photoshoot with luxury car rental Dubai",
@@ -22,9 +25,9 @@ export default function Services() {
 
 	return (
 		<main>
-			<article className="bg-[#1e1f27] text-white py-10 px-0">
+			<article className="bg-[#1e1f27] text-white py-8 px-0">
 				<section className="max-w-[1248px] mx-auto tracking-wide">
-					<h1 className="font-medium text-[30px]">SERVICES</h1>
+					<h1 className="font-medium text-[30px] leading-none">SERVICES</h1>
 					<div className="flex gap-x-8 mt-6">
 						{services?.map((service) => (
 							<div key={service.title} className="w-[370px]">
@@ -36,7 +39,8 @@ export default function Services() {
 									{service.description}
 								</p>
 								<Link
-									to="/"
+									to={`/service/${service.id}`}
+									onClick={scrollTop}
 									className="font-medium tracking-wide flex items-center gap-x-2 group mt-4"
 								>
 									LEARN MORE

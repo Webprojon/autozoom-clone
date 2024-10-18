@@ -9,7 +9,7 @@ export default function NotFound() {
 				<h1 className="text-[32px] uppercase">404 - page is not found</h1>
 				<p>
 					The page you are looking for might have been removed, had its name
-					changed or is temporarily unavailable 😏
+					changed or is temporarily unavailable 🤷‍♂️😏
 				</p>
 				<button
 					onClick={scrollTop}

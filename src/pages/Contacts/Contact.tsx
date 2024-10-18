@@ -6,30 +6,41 @@ export default function Contact() {
 	return (
 		<main className="bg-[#1E1F27] pt-10 pb-20">
 			<article className="w-[1248px] mx-auto text-white">
-				<h1 className="leading-none uppercase text-[30px] font-semibold">
-					Have any questions ?
-				</h1>
-				<p className="text-gray-300 pt-3">
-					We would love to help <br /> Auto Zoom Car Rental Dubai, is the best
-					luxury car rental Dubai based company.
-				</p>
+				<header>
+					<h1 className="leading-none uppercase text-[30px] font-semibold">
+						Have any questions?
+					</h1>
+					<p className="text-gray-300 pt-3">
+						We would love to help <br /> Auto Zoom Car Rental Dubai is the best
+						luxury car rental company based in Dubai.
+					</p>
+				</header>
 
 				<section className="mt-16">
-					<p className="font-semibold text-[24px]">Head office</p>
+					<h2 className="font-semibold text-[24px]">Head office</h2>
 					<div className="flex flex-col gap-y-3 pb-5 mt-3 border-b-2">
-						<span className="flex items-center">
-							<GrLocation className="size-5 text-gray-400 mr-3" />
-							Elite 3 Sports City, Dubai 26W8 24J, United Arab Emirates
-						</span>
+						<address className="not-italic">
+							<span className="flex items-center">
+								<GrLocation className="size-5 text-gray-400 mr-3" />
+								Elite 3 Sports City, Dubai 26W8 24J, United Arab Emirates
+							</span>
+						</address>
 
 						<span className="flex items-center">
 							<FaPhoneAlt className="size-4 text-gray-400 mr-3" />
-							+971 52 7030189
+							<a href="tel:+971527030189" className="hover:underline">
+								+971 52 7030189
+							</a>
 						</span>
 
 						<span className="flex items-center">
 							<HiOutlineMailOpen className="size-5 text-gray-400 mr-3" />
-							office@autozoomrental.com
+							<a
+								href="mailto:office@autozoomrental.com"
+								className="hover:underline"
+							>
+								office@autozoomrental.com
+							</a>
 						</span>
 					</div>
 				</section>
