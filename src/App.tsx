@@ -15,6 +15,7 @@ import Blog from "./pages/Blog/Blog";
 import TermConditiont from "./pages/TermCondition/TermCondition";
 import NotFound from "./pages/NotFound/NotFound";
 import ServiceDetail from "./pages/Services/Service-Detail";
+import BlogDetails from "./pages/Blog/Blog-details";
 
 function App() {
 	return (
@@ -32,6 +33,7 @@ function App() {
 						<Route path="/about_us" element={<About />} />
 						<Route path="/contact" element={<Contact />} />
 						<Route path="/blog" element={<Blog />} />
+						<Route path="/blog_info/:id" element={<BlogDetails />} />
 						<Route path="/terms_and_conditions" element={<TermConditiont />} />
 						<Route path="*" element={<NotFound />} />
 					</Routes>

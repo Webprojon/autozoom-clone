@@ -62,7 +62,7 @@ export default function Blog() {
 								<p className="text-[18px]">{blog.description}</p>
 								<div className="flex justify-between">
 									<span className="text-gray-400">{blog.date}</span>
-									<Link to={blog.link}>
+									<Link to={`/blog_info/${blog.id}`}>
 										<CgChevronRightO className="size-8" onClick={scrollTop} />
 									</Link>
 								</div>
