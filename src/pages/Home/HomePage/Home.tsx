@@ -14,6 +14,7 @@ import FAQPage from "../FAQPage/FAQ";
 import Services from "../../Services/Services";
 import CarsHome from "../CarsPage/Cars-Home";
 import { scrollTop } from "../../../lib/hooks";
+import Rules from "../Rules/Rules";
 
 export default function Home() {
 	const [brands, setBrands] = useState([]);
@@ -149,6 +150,7 @@ export default function Home() {
 
 			<CarsHome />
 			<Services />
+			<Rules />
 			<FAQPage />
 		</>
 	);

@@ -55,7 +55,11 @@ export default function Footer() {
 								Cars
 							</Link>
 							{categories.map((category: CategoryType) => (
-								<Link to={`cars/${category.id}`} className="text-gray-400">
+								<Link
+									key={category.id}
+									to={`cars/${category.id}`}
+									className="text-gray-400"
+								>
 									{category.name_en}
 								</Link>
 							))}
