@@ -1,9 +1,9 @@
-import { FiSearch } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import Brand from "../pages/Brand/Brand";
 import { useGlobalContext } from "../context/global-context";
 import { useState } from "react";
 import { scrollTop } from "../lib/hooks";
+import HeaderInput from "./Header-Input";
 
 export default function Header() {
 	const { isHovered, setIsHovered } = useGlobalContext();
@@ -67,14 +67,7 @@ export default function Header() {
 						/>
 					</div>
 
-					<div className="relative text-white">
-						<input
-							type="text"
-							placeholder="Search..."
-							className="header-input-bg w-[320px] bg-[#36373D] py-[12px] pl-[42px] text-[15px] rounded-lg tracking-wider outline-none text-stone-300 placeholder:text-stone-300"
-						/>
-						<FiSearch className="absolute top-1/2 left-2 -translate-y-1/2 size-6" />
-					</div>
+					<HeaderInput />
 
 					<Link
 						to="/"

@@ -25,7 +25,7 @@ export default function CarsHome() {
 			{data?.map((category: CategoryType) => (
 				<section
 					key={category.id}
-					className="py-6 max-w-[1248px] mx-auto px-4 md:px-0"
+					className="py-10 max-w-[1248px] mx-auto px-4 md:px-0"
 				>
 					<main>
 						<section className="flex text-white items-center justify-between">
@@ -70,7 +70,7 @@ export default function CarsHome() {
 							{category.cars.map((car) => (
 								<SwiperSlide
 									key={car.id}
-									className="max-w-[350px] h-[435px] bg-gradient cursor-pointer px-4 text-white rounded-[20px]"
+									className="max-w-[350px] h-[435px] bg-gradient cursor-pointer px-4 text-white rounded-xl"
 								>
 									<Link to={`/carinfo/${car.id}`} onClick={scrollTop}>
 										{car.car_images.map(

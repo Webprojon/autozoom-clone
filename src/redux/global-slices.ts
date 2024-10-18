@@ -1,15 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface GlobalType {
-	name: string;
+	inputValue: string;
 }
 
-const initialState = {} as GlobalType;
+const initialState = {
+	inputValue: "",
+} as GlobalType;
 
 export const globalSlices = createSlice({
 	name: "global store",
 	initialState,
-	reducers: {},
+	reducers: {
+		setInputValue: (state, action) => {
+			state.inputValue = action.payload;
+		},
+	},
 });
 
-//export const {} = globalSlices.actions;
+export const { setInputValue } = globalSlices.actions;

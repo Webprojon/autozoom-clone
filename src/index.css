@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* SCROLL STYLES ***************************************************/
 html::-webkit-scrollbar {
 	width: 6px;
 	background-color: #f0f0f0;
@@ -30,6 +31,7 @@ html::-webkit-scrollbar-thumb {
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 }
+/* SCROLL STYLES ***************************************************/
 
 .header-input-bg {
 	background: rgb(19, 20, 26);
