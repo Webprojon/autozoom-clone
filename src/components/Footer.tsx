@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import { scrollTop } from "../lib/hooks";
 import { CategoryType } from "../lib/types";
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 export default function Footer() {
 	const [categories, setCategories] = useState([]);
+	const { t } = useTranslation();
 
 	useEffect(() => {
 		const fetchCarData = async () => {
@@ -23,8 +25,8 @@ export default function Footer() {
 	}, []);
 
 	return (
-		<footer className="h-[70vh] pt-12 bg-[#111219] text-white">
-			<main className="flex justify-between w-[1248px] mx-auto tracking-wide">
+		<footer className="bg-[#111219] text-white">
+			<main className="py-10 flex justify-between w-[1248px] mx-auto tracking-wide">
 				<aside className="space-y-8 w-[280px]">
 					<Link to="/" onClick={scrollTop}>
 						<img
@@ -33,26 +35,21 @@ export default function Footer() {
 							src="https://www.autozoomrental.com/static/media/logo1.cd0ee2ea64bdb4e351d6eb2c72171d12.svg"
 						/>
 					</Link>
-					<h1 className="font-bold text-[30px] leading-9">
-						LUXURY CAR RENTAL IN DUBAI
-					</h1>
-					<p className="text-gray-400">
-						Rent sports and luxury cars directly without intermediaries. Rent a
-						car in Dubai with Auto Zoom Car Rental - safety and driving pleasure
-					</p>
+					<h1 className="font-bold text-[30px] leading-9">{t("footer-h1")}</h1>
+					<p className="text-gray-400">{t("footer-p")}</p>
 					<button
 						onClick={scrollTop}
 						className="uppercase py-5 px-9 font-medium text-[18px] border rounded-[14px] transition-all hover:bg-[#FE363B] hover:border-none"
 					>
-						<Link to="/cars">get best offer</Link>
+						<Link to="/cars">{t("footer-btn")}</Link>
 					</button>
 				</aside>
 
 				<section className="w-[850px]">
 					<article className="flex justify-between">
 						<section className="flex flex-col gap-y-3" onClick={scrollTop}>
-							<Link to="/cars" className="text-[20px] uppercase">
-								Cars
+							<Link to="/cars" className="text-[18px] uppercase">
+								{t("link1")}
 							</Link>
 							{categories.map((category: CategoryType) => (
 								<Link
@@ -66,22 +63,29 @@ export default function Footer() {
 						</section>
 
 						<section>
-							<div className="uppercase flex flex-col gap-y-3 text-[19px]">
-								<Link to="/blog">Blog</Link>
-								<Link to="/service">Services</Link>
-								<Link to="/about_us">About Us</Link>
-								<Link to="/contact">Contacts</Link>
+							<div
+								className="uppercase flex flex-col gap-y-3 text-[18px]"
+								onClick={scrollTop}
+							>
+								<Link to="/blog">{t("link6")}</Link>
+								<Link to="/service">{t("link3")}</Link>
+								<Link to="/about_us">{t("link4")}</Link>
+								<Link to="/contact">{t("link5")}</Link>
 							</div>
-							<p className="text-[15px] mt-3 text-gray-400">
-								Elite 3 Sports City, Dubai 26W8 24J, <br /> United Arab Emirates
-								<br /> +971 52 7030189
-								<br />
-								Working hours: 24/7
-							</p>
+
+							<div className="text-[15px] mt-3 text-gray-400">
+								<p>
+									{t("footer-detail-p1-br")} <br /> {t("footer-detail-p1")}
+								</p>
+								<p>+971 52 7030189</p>
+								<p>{t("footer-detail-p2")}</p>
+							</div>
 						</section>
 
 						<section>
-							<span className="text-[19px] uppercase">Follow Us</span>
+							<span className="text-[18px] uppercase">
+								{t("footer-follow")}
+							</span>
 							<div className="flex gap-x-3 mt-3 text-gray-400">
 								<a
 									href="https://www.instagram.com/autozoomrental/"
@@ -107,10 +111,10 @@ export default function Footer() {
 
 					<article className="text-gray-400 text-[15px] flex justify-between items-center mt-10 py-6 border-t border-gray-500">
 						<p>
-							© 2024 Auto Zoom Car Rental. <br /> United Arab Emirates.
+							{t("footer-term")} <br /> {t("footer-detail-p1")}
 						</p>
 						<Link to="/terms_and_conditions" onClick={scrollTop}>
-							Terms and Conditions
+							{t("footer-term2")}
 						</Link>
 					</article>
 				</section>

@@ -1,51 +1,76 @@
 import { Link } from "react-router-dom";
 import Brand from "../pages/Brand/Brand";
 import { useGlobalContext } from "../context/global-context";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { scrollTop } from "../lib/hooks";
 import HeaderInput from "./Header-Input";
+import { useTranslation } from "react-i18next";
 
 export default function Header() {
 	const { isHovered, setIsHovered } = useGlobalContext();
 	const [activeSection, setActiveSection] = useState("");
+	const [selectedLanguage, setSelectedLanguage] = useState("");
+	const { i18n } = useTranslation();
+	const { t } = useTranslation();
 
-	const links = [
-		{
-			id: 1,
-			hash: "/cars",
-			link: "Cars",
-		},
-		{
-			id: 2,
-			hash: "/",
-			link: "Brand",
-		},
-		{
-			id: 3,
-			hash: "/service",
-			link: "Services",
-		},
-		{
-			id: 4,
-			hash: "/about_us",
-			link: "About Us",
-		},
-		{
-			id: 5,
-			hash: "/contact",
-			link: "Contacts",
-		},
-		{
-			id: 6,
-			hash: "/blog",
-			link: "Blogs",
-		},
-	];
+	useEffect(() => {
+		const initialLanguage =
+			typeof window !== "undefined"
+				? localStorage.getItem("i18nextLng") || "en"
+				: "en";
+		setSelectedLanguage(initialLanguage);
+	}, []);
+
+	const handleClickLang = (language: string) => {
+		console.log(selectedLanguage);
+		setSelectedLanguage(language);
+		i18n.changeLanguage(language);
+		localStorage.setItem("i18nextLng", language);
+	};
 
 	const handleClickLink = (link: string) => {
 		setActiveSection(link);
 		scrollTop();
 	};
+
+	const handleClick = () => {
+		scrollTop();
+		setActiveSection("");
+	};
+
+	// Static Links
+	const links = [
+		{
+			id: 1,
+			hash: "/cars",
+			link: t("link1"),
+		},
+		{
+			id: 2,
+			hash: "/",
+			link: t("link2"),
+		},
+		{
+			id: 3,
+			hash: "/service",
+			link: t("link3"),
+		},
+		{
+			id: 4,
+			hash: "/about_us",
+			link: t("link4"),
+		},
+		{
+			id: 5,
+			hash: "/contact",
+			link: t("link5"),
+		},
+		{
+			id: 6,
+			hash: "/blog",
+			link: t("link6"),
+		},
+	];
 
 	return (
 		<header className="bg-[#111219] sticky top-0 z-10">
@@ -55,27 +80,21 @@ export default function Header() {
 						<img
 							src="https://static.vecteezy.com/system/resources/thumbnails/007/910/760/small_2x/united-kingdom-flag-rounded-icon-uk-flag-union-jack-vector.jpg"
 							alt="English flag"
-							//onClick={() => handleClick("en")}
+							onClick={() => handleClickLang("en")}
 							className="w-7 hover:scale-105 transition-all custom-shadow rounded-full"
 						/>
 
 						<img
 							src="https://vectorflags.s3.amazonaws.com/flags/ru-circle-01.png"
 							alt="Russian flag"
-							//onClick={() => handleClick("ru")}
+							onClick={() => handleClickLang("ru")}
 							className="w-7 hover:scale-105 transition-all custom-shadow rounded-full"
 						/>
 					</div>
 
 					<HeaderInput />
 
-					<Link
-						to="/"
-						onClick={() => {
-							scrollTop();
-							setActiveSection("");
-						}}
-					>
+					<Link to="/" onClick={handleClick}>
 						<img
 							alt="car rental logo"
 							className="w-[100px]"
@@ -84,7 +103,7 @@ export default function Header() {
 					</Link>
 				</section>
 
-				<section className="text-white uppercase space-x-10 text-[15px] font-medium tracking-wide">
+				<section className="text-white uppercase space-x-10 font-medium tracking-wide">
 					{links.map((link) => (
 						<Link
 							onMouseEnter={() => link.link === "Brand" && setIsHovered(true)}

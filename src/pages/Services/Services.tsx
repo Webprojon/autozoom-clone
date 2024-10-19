@@ -1,25 +1,26 @@
 import { CgChevronRightO } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import { scrollTop } from "../../lib/hooks";
+import { useTranslation } from "react-i18next";
 
 export default function Services() {
+	const { t } = useTranslation();
+
 	// Static data
 	const services = [
 		{
 			id: 1,
 			imgSrc:
 				"https://www.autozoomrental.com/static/media/sercardimg1.40892caaec9bfa3d404a.jpg",
-			title: "Sports Car Rental Dubai Style Tour in Dubai",
-			description:
-				"Experience the thrill of a dune buggy tour in Dubai with us. We offer free hotel pick-up & drop-off service. Book now!",
+			title: t("service-card1.title"),
+			description: t("service-card1.description"),
 		},
 		{
 			id: 2,
 			imgSrc:
 				"https://www.autozoomrental.com/static/media/sercardiimg2.79fb9209cbfcc61c8c65.jpg",
-			title: "Photoshoot with luxury car rental Dubai",
-			description:
-				"Professional car photoshoot as an additional type of service at Auto Zoom Car Rental",
+			title: t("service-card2.title"),
+			description: t("service-card2.description"),
 		},
 	];
 
@@ -27,7 +28,9 @@ export default function Services() {
 		<main>
 			<article className="bg-[#1e1f27] text-white py-8 px-0">
 				<section className="max-w-[1248px] mx-auto tracking-wide">
-					<h1 className="font-medium text-[30px] leading-none">SERVICES</h1>
+					<h1 className="font-medium text-[30px] leading-none">
+						{t("service")}
+					</h1>
 					<div className="flex gap-x-8 mt-6">
 						{services?.map((service) => (
 							<div key={service.title} className="w-[370px]">
@@ -43,7 +46,7 @@ export default function Services() {
 									onClick={scrollTop}
 									className="font-medium tracking-wide flex items-center gap-x-2 group mt-4"
 								>
-									LEARN MORE
+									{t("learn-more")}
 									<CgChevronRightO className="size-7 group-hover:translate-x-1 transition-all" />
 								</Link>
 							</div>

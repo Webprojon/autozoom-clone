@@ -15,9 +15,11 @@ import Services from "../../Services/Services";
 import CarsHome from "../CarsPage/Cars-Home";
 import { scrollTop } from "../../../lib/hooks";
 import Rules from "../Rules/Rules";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
 	const [brands, setBrands] = useState([]);
+	const { t } = useTranslation();
 
 	const handleSwiperInit = (swiper: SwiperClass) => {
 		swiper.on("slideChange", () => {
@@ -46,18 +48,13 @@ export default function Home() {
 		<>
 			<main id="reviews" className="home-bg flex flex-col items-center">
 				<section className="text-white tracking-wide w-[680px] mt-10 flex flex-col items-center justify-center text-center">
-					<h1 className="text-[44px] font-medium font-serif leading-[3.5rem] tracking-widest">
-						TOP LUXURY CAR <br /> RENTAL DUBAI
+					<h1 className="w-[560px] text-[44px] font-medium font-serif leading-[3.5rem] tracking-widest">
+						{t("home-h1")}
 					</h1>
-					<p className="text-zinc-300 text-lg pt-2">
-						Best sports car & supercar rental Dubai, Exclusive offers on luxury
-						car rental Dubai Cheap price
-					</p>
+					<p className="text-zinc-300 text-lg pt-2">{t("home-p")}</p>
 
 					<div className="font-medium flex items-center space-x-3 mt-6 text-[20px] cursor-pointer group">
-						<span onClick={() => location.reload()}>
-							RENT A CAR DUBAI CATALOG
-						</span>
+						<span onClick={() => location.reload()}>{t("home-span")}</span>
 						<CgChevronRightO className="size-7 group-hover:translate-x-1 transition-all" />
 					</div>
 				</section>

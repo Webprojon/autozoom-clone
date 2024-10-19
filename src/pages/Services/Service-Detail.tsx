@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { IoCheckbox } from "react-icons/io5";
 import { useParams } from "react-router-dom";
 
@@ -18,6 +19,7 @@ interface BlogDetail {
 
 export default function ServiceDetail() {
 	const { id } = useParams();
+	const { t } = useTranslation();
 
 	// Static data
 	const blogDetails: BlogDetail[] = [
@@ -28,57 +30,54 @@ export default function ServiceDetail() {
 					id: 1,
 					imgSrc:
 						"https://starrluxurycars.com/wp-content/uploads/2023/05/SLC-rolls-royce-ghost-dubai-united-arab-emirates-burj-khalifa-umm-suqeim-beach-hire-starr-luxury-cars.feel-the-experience-1.jpg",
-					type: "Basic Package",
+					type: t("service-detail-card1.type"),
 					price: "1000",
-					people: "one person",
-					description:
-						"Dune buggies in Dubai Book your ride on the most exciting adventure activity to hit the desert and later pamper your self to a traditional Arabian hospitality.",
+					people: t("service-detail-card1.people"),
+					description: t("service-detail-card1.description"),
 					includes: [
-						"Premium Transfer to camp",
-						"Dune Buggy riding 1.5 hours",
-						"Cuadro 15 min",
-						"Falcone shoting",
-						"Camel",
-						"VIP room",
-						"Fruits, Drinks, BBQ",
+						t("service-detail-card1.includes.one"),
+						t("service-detail-card1.includes.two"),
+						t("service-detail-card1.includes.three"),
+						t("service-detail-card1.includes.four"),
+						t("service-detail-card1.includes.five"),
+						t("service-detail-card1.includes.six"),
+						t("service-detail-card1.includes.seven"),
 					],
 				},
 				{
 					id: 2,
 					imgSrc:
 						"https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0e/57/f5/af.jpg",
-					type: "Premium Package",
+					type: t("service-detail-card2.type"),
 					price: "2000",
-					people: "two person",
-					description:
-						"1asasa2334343434Dune buggies in Dubai Book your ride on the most exciting adventure activity to hit the desert and later pamper your self to a traditional Arabian hospitality.",
+					people: t("service-detail-card2.people"),
+					description: t("service-detail-card2.description"),
 					includes: [
-						"Premium Transfer to camp",
-						"Dune Buggy riding 1.5 hours",
-						"Cuadro 15 min",
-						"Falcone shoting",
-						"Camel",
-						"VIP room",
-						"Fruits, Drinks, BBQ",
+						t("service-detail-card1.includes.one"),
+						t("service-detail-card1.includes.two"),
+						t("service-detail-card1.includes.three"),
+						t("service-detail-card1.includes.four"),
+						t("service-detail-card1.includes.five"),
+						t("service-detail-card1.includes.six"),
+						t("service-detail-card1.includes.seven"),
 					],
 				},
 				{
 					id: 3,
 					imgSrc:
 						"https://k-auto.studio.crasman.cloud/pub/vehicles/FOT/FOT-699/bf7a8c3425d1da1_FOT-699.jpg?c=system_x1080",
-					type: "Pro Package",
+					type: t("service-detail-card3.type"),
 					price: "3000",
-					people: "three person",
-					description:
-						"121212334343434Dune buggies in Dubai Book your ride on the most exciting adventure activity to hit the desert and later pamper your self to a traditional Arabian hospitality.",
+					people: t("service-detail-card3.people"),
+					description: t("service-detail-card3.description"),
 					includes: [
-						"Premium Transfer to camp",
-						"Dune Buggy riding 1.5 hours",
-						"Cuadro 15 min",
-						"Falcone shoting",
-						"Camel",
-						"VIP room",
-						"Fruits, Drinks, BBQ",
+						t("service-detail-card1.includes.one"),
+						t("service-detail-card1.includes.two"),
+						t("service-detail-card1.includes.three"),
+						t("service-detail-card1.includes.four"),
+						t("service-detail-card1.includes.five"),
+						t("service-detail-card1.includes.six"),
+						t("service-detail-card1.includes.seven"),
 					],
 				},
 			],
@@ -90,38 +89,36 @@ export default function ServiceDetail() {
 					id: 1,
 					imgSrc:
 						"https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0e/57/f5/af.jpg",
-					type: "Basic Package",
+					type: t("service-detail-card1.type"),
 					price: "232323",
-					people: "one person",
-					description:
-						"121212334343434Dune buggies in Dubai Book your ride on the most exciting adventure activity to hit the desert and later pamper your self to a traditional Arabian hospitality.",
+					people: t("service-detail-card1.people"),
+					description: t("service-detail-card1.description"),
 					includes: [
-						"Premium Transfer to camp",
-						"Dune Buggy riding 1.5 hours",
-						"Cuadro 15 min",
-						"Falcone shoting",
-						"Camel",
-						"VIP room",
-						"Fruits, Drinks, BBQ",
+						t("service-detail-card1.includes.one"),
+						t("service-detail-card1.includes.two"),
+						t("service-detail-card1.includes.three"),
+						t("service-detail-card1.includes.four"),
+						t("service-detail-card1.includes.five"),
+						t("service-detail-card1.includes.six"),
+						t("service-detail-card1.includes.seven"),
 					],
 				},
 				{
 					id: 2,
 					imgSrc:
 						"https://media2.autokopen.nl/afbeeldingen/mercedes-amg-gt-4-door-coupe-297357-1920.jpg",
-					type: "Premium Package",
+					type: t("service-detail-card2.type"),
 					price: "232323",
-					people: "two person",
-					description:
-						"1asasa2334343434Dune buggies in Dubai Book your ride on the most exciting adventure activity to hit the desert and later pamper your self to a traditional Arabian hospitality.",
+					people: t("service-detail-card2.people"),
+					description: t("service-detail-card2.description"),
 					includes: [
-						"Premium Transfer to camp",
-						"Dune Buggy riding 1.5 hours",
-						"Cuadro 15 min",
-						"Falcone shoting",
-						"Camel",
-						"VIP room",
-						"Fruits, Drinks, BBQ",
+						t("service-detail-card1.includes.one"),
+						t("service-detail-card1.includes.two"),
+						t("service-detail-card1.includes.three"),
+						t("service-detail-card1.includes.four"),
+						t("service-detail-card1.includes.five"),
+						t("service-detail-card1.includes.six"),
+						t("service-detail-card1.includes.seven"),
 					],
 				},
 			],
@@ -134,7 +131,7 @@ export default function ServiceDetail() {
 		return (
 			<section className="bg-[#1E1F27] h-[50vh]">
 				<p className="text-center pt-[7rem] text-white text-[35px] font-medium">
-					Not found such items 🤷‍♂️
+					{t("service-detail-not-found")}
 				</p>
 			</section>
 		);
@@ -144,7 +141,7 @@ export default function ServiceDetail() {
 		<main className="bg-[#1E1F27]">
 			<section className="w-[1248px] mx-auto text-white py-8 tracking-wide">
 				<h1 className="text-[29px] font-medium leading-none mb-8">
-					Sports Car Rental Dubai Style Tour in Dubai
+					{t("service-detail-h1")}
 				</h1>
 
 				<section className="grid grid-cols-3 gap-x-14">
@@ -183,7 +180,7 @@ export default function ServiceDetail() {
 									))}
 								</ul>
 								<button className="w-[100%] uppercase py-4 px-6 font-medium text-[20px] rounded-lg transition-all bg-[#FE363B] hover:bg-[#d84447]">
-									<a href="tel:+971527030189">Book Now</a>
+									<a href="tel:+971527030189">{t("book-now")}</a>
 								</button>
 							</div>
 						</article>
