@@ -38,6 +38,12 @@ export default function Header() {
 		setActiveSection("");
 	};
 
+	const handleEvents = (link: string, which: boolean) => {
+		if (link == "Brand" || link == "БРЕНД") {
+			setIsHovered(which);
+		}
+	};
+
 	// Static Links
 	const links = [
 		{
@@ -106,14 +112,14 @@ export default function Header() {
 				<section className="text-white uppercase space-x-10 font-medium tracking-wide">
 					{links.map((link) => (
 						<Link
-							onMouseEnter={() => link.link === "Brand" && setIsHovered(true)}
-							onMouseLeave={() => link.link === "Brand" && setIsHovered(false)}
+							onMouseEnter={() => handleEvents(link.link, true)}
+							onMouseLeave={() => handleEvents(link.link, false)}
 							onClick={() => handleClickLink(link.link)}
 							to={link.hash}
 							key={link.id}
 							className={`
 								${
-									link.link === "Brand"
+									link.link === "Brand" || link.link === "БРЕНД"
 										? "pb-5 border-none"
 										: `hover:border-b-2 border-red-500 pb-1
 										 ${activeSection === link.link ? "border-b-2 border-red-500 pb-1" : ""}`

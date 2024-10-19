@@ -33,6 +33,7 @@ export interface Car {
 export interface CategoryType {
 	id: string;
 	name_en: string;
+	name_ru: string;
 	name: string;
 	image_src: string;
 	title: string;

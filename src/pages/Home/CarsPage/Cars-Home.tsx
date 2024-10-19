@@ -5,10 +5,13 @@ import { Link } from "react-router-dom";
 import { useGlobalContext } from "../../../context/global-context";
 import { scrollTop } from "../../../lib/hooks";
 import { CategoryType } from "../../../lib/types";
+import { useTranslation } from "react-i18next";
 
 export default function CarsHome() {
 	// Use Context
 	const { data } = useGlobalContext();
+
+	const { t } = useTranslation();
 
 	// One text is incorrect written, so fixing here
 	const CorrectingText = (name: string) => {
@@ -20,6 +23,11 @@ export default function CarsHome() {
 		}
 	};
 
+	const language =
+		typeof window !== "undefined"
+			? localStorage.getItem("i18nextLng") || "en"
+			: "en";
+
 	return (
 		<main className="bg-[#272933]">
 			{data?.map((category: CategoryType) => (
@@ -29,8 +37,11 @@ export default function CarsHome() {
 				>
 					<main>
 						<section className="flex text-white items-center justify-between">
-							<h2 className="uppercase leading-none text-[18px] md:text-[34px]">
-								{CorrectingText(category.name_en)} RENTAL DUBAI
+							<h2 className="uppercase leading-none text-[18px] md:text-[30px]">
+								{CorrectingText(
+									language === "ru" ? category.name_ru : category.name_en,
+								)}{" "}
+								{t("cars-home-h2")}
 							</h2>
 							<Link
 								to={`/cars/${category.id}`}
@@ -38,7 +49,7 @@ export default function CarsHome() {
 								className="group cursor-pointer flex items-center gap-x-3"
 							>
 								<span className="xs:text-[20px] sm:text-[21px] font-medium">
-									SEE ALL
+									{t("cars-home-span")}
 								</span>
 								<CgChevronRightO className="size-7 group-hover:translate-x-1 transition-all" />
 							</Link>

@@ -24,6 +24,11 @@ export default function Footer() {
 		fetchCarData();
 	}, []);
 
+	const language =
+		typeof window !== "undefined"
+			? localStorage.getItem("i18nextLng") || "en"
+			: "en";
+
 	return (
 		<footer className="bg-[#111219] text-white">
 			<main className="py-10 flex justify-between w-[1248px] mx-auto tracking-wide">
@@ -57,7 +62,7 @@ export default function Footer() {
 									to={`cars/${category.id}`}
 									className="text-gray-400"
 								>
-									{category.name_en}
+									{language === "ru" ? category.name_ru : category.name_en}
 								</Link>
 							))}
 						</section>
