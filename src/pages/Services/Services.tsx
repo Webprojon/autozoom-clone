@@ -39,7 +39,7 @@ export default function Services() {
 									src={service.imgSrc}
 									className="rounded-md"
 								/>
-								<h2 className="my-6 text-[18px] lg:text-[24px] leading-[1.9rem] font-medium">
+								<h2 className="my-6 text-[19px] lg:text-[24px] leading-[1.9rem] font-semibold">
 									{service.title}
 								</h2>
 								<p className="text-[18px] line-clamp-2">

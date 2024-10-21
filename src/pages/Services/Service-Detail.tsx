@@ -179,7 +179,7 @@ export default function ServiceDetail() {
 										</li>
 									))}
 								</ul>
-								<button className="w-[100%] uppercase py-4 px-6 font-medium text-[20px] rounded-lg transition-all bg-[#FE363B] hover:bg-[#d84447]">
+								<button className="w-[100%] uppercase py-3 lg:py-4 px-6 font-medium text-[20px] rounded-lg transition-all bg-[#FE363B] hover:bg-[#d84447]">
 									<a href="tel:+971527030189">{t("book-now")}</a>
 								</button>
 							</div>
