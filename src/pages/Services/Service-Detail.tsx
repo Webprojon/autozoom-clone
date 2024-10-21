@@ -138,15 +138,15 @@ export default function ServiceDetail() {
 	}
 
 	return (
-		<main className="bg-[#1E1F27]">
-			<section className="w-[1248px] mx-auto text-white py-8 tracking-wide">
-				<h1 className="text-[29px] font-medium leading-none mb-8">
+		<main className="bg-[#1E1F27] px-4 lg:px-0">
+			<section className="max-w-[1248px] mx-auto text-white py-8 tracking-wide">
+				<h1 className="text-[29px] font-medium leading-9 lg:leading-none mb-8">
 					{t("service-detail-h1")}
 				</h1>
 
-				<section className="grid grid-cols-3 gap-x-14">
+				<section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 lg:gap-x-14">
 					{details?.packages?.map((detail) => (
-						<article key={detail.id} className="w-[400px]">
+						<article key={detail.id} className="w-full lg:w-[400px]">
 							<img
 								alt="Tour Image"
 								src={detail.imgSrc}

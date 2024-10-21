@@ -26,14 +26,14 @@ export default function Services() {
 
 	return (
 		<main>
-			<article className="bg-[#1e1f27] text-white py-8 px-0">
+			<article className="bg-[#1e1f27] text-white py-8 px-4 lg:px-0">
 				<section className="max-w-[1248px] mx-auto tracking-wide">
 					<h1 className="font-medium text-[30px] leading-none">
 						{t("service")}
 					</h1>
-					<div className="flex gap-x-8 mt-6">
+					<section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-6">
 						{services?.map((service) => (
-							<div key={service.title} className="w-[370px]">
+							<div key={service.title} className="lg:w-[370px]">
 								<img alt="service img" src={service.imgSrc} />
 								<h2 className="my-6 text-[24px] leading-[1.8rem] font-medium">
 									{service.title}
@@ -51,7 +51,7 @@ export default function Services() {
 								</Link>
 							</div>
 						))}
-					</div>
+					</section>
 				</section>
 			</article>
 		</main>

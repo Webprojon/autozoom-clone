@@ -1,21 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface GlobalType {
-	inputValue: string;
+	isMenuOpen: boolean;
 }
 
 const initialState = {
-	inputValue: "",
+	isMenuOpen: false,
 } as GlobalType;
 
 export const globalSlices = createSlice({
 	name: "global store",
 	initialState,
 	reducers: {
-		setInputValue: (state, action) => {
-			state.inputValue = action.payload;
+		setIsMenuOpen: (state, action) => {
+			state.isMenuOpen = action.payload;
 		},
 	},
 });
 
-export const { setInputValue } = globalSlices.actions;
+export const { setIsMenuOpen } = globalSlices.actions;

@@ -39,10 +39,10 @@ export default function FAQPage() {
 		},
 	];
 	return (
-		<main className="bg-[#1E1F27]">
-			<article className="w-[1248px] mx-auto text-white tracking-wider">
+		<main className="bg-[#1E1F27] px-4 lg:px-0">
+			<article className="max-w-[1248px] mx-auto text-white tracking-wider">
 				<h1 className="font-medium text-[30px] py-6">{t("faq")}</h1>
-				<section className="h-[70vh] flex flex-col gap-y-10 mt-6 md:mt-0">
+				<section className="h-[70vh] flex flex-col gap-y-10 lg:mt-6 md:mt-0">
 					{faqs.map(({ id, question, answer }) => (
 						<div key={id} className="lg:w-[900px]">
 							<div className="border-b border-gray-600">
@@ -57,7 +57,7 @@ export default function FAQPage() {
 
 									<h2
 										onClick={() => handleToggle(id)}
-										className="text-sm cursor-pointer xs:text-[16px] sm:text-[20px] lg:text-[23px]"
+										className="cursor-pointer text-md sm:text-lg"
 									>
 										{question}
 									</h2>
@@ -67,7 +67,7 @@ export default function FAQPage() {
 									className={`overflow-hidden transition-max-height duration-500 ease-in-out 
 										${toggle === id ? "max-h-screen" : "max-h-0"}`}
 								>
-									<p className="bg-[#272933] mb-2 py-2 px-4 text-sm xs:text-md sm:text-lg">
+									<p className="bg-[#272933] mb-2 py-2 px-4 text-md sm:text-lg">
 										{answer}
 									</p>
 								</div>

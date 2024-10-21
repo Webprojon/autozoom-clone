@@ -7,9 +7,13 @@ export default function NotFound() {
 
 	return (
 		<main className="bg-[#111219] h-screen fixed left-0 right-0 top-0 z-30">
-			<article className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 space-y-7 w-[580px] tracking-wide text-center text-white font-medium">
-				<span className="text-[110px] leading-none">{t("notfound-span")}</span>
-				<h1 className="text-[32px] uppercase">{t("notfound-h1")}</h1>
+			<article className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 space-y-7 w-full sm:w-[580px] tracking-wide text-center text-white font-medium px-2">
+				<span className="text-[70px] sm:text-[110px] leading-none">
+					{t("notfound-span")}
+				</span>
+				<h1 className="text-[26px] sm:text-[32px] uppercase">
+					{t("notfound-h1")}
+				</h1>
 				<p>{t("notfound-p")}</p>
 				<button
 					onClick={scrollTop}

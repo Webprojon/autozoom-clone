@@ -49,10 +49,10 @@ export default function BlogDetails() {
 	}
 
 	return (
-		<main className="bg-[#1E1F27]">
-			<section className="w-[1248px] mx-auto py-10 text-white tracking-wide">
+		<main className="bg-[#1E1F27] px-4 lg:px-0">
+			<section className="max-w-[1248px] mx-auto py-10 text-white tracking-wide">
 				<article className="space-y-8">
-					<h1 className="text-[30px] font-medium leading-none">
+					<h1 className="text-[20px] sm:text-[30px] font-medium leading-8 md:leading-none">
 						{detail.title}
 					</h1>
 					<p className="text-[18px]">{detail.firstDescription}</p>
@@ -62,7 +62,7 @@ export default function BlogDetails() {
 					<img
 						alt="blog imgs"
 						src={detail.imgSrc}
-						className="w-[100%] h-[78vh] object-cover rounded-lg"
+						className="w-[100%] h-[40vh] sm:h-[50vh] md:h-[78vh] object-cover rounded-lg"
 					/>
 					<p className="text-[18px]">{detail.secondDescription}</p>
 				</article>

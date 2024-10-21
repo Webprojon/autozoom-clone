@@ -30,9 +30,9 @@ export default function Footer() {
 			: "en";
 
 	return (
-		<footer className="bg-[#111219] text-white">
-			<main className="py-10 flex justify-between w-[1248px] mx-auto tracking-wide">
-				<aside className="space-y-8 w-[280px]">
+		<footer className="bg-[#111219] text-white px-4 lg:px-0">
+			<main className="py-10 flex flex-col md:flex-row justify-between max-w-[1248px] mx-auto tracking-wide">
+				<aside className="space-y-8 lg:w-[280px]">
 					<Link to="/" onClick={scrollTop}>
 						<img
 							alt="logo"
@@ -50,8 +50,8 @@ export default function Footer() {
 					</button>
 				</aside>
 
-				<section className="w-[850px]">
-					<article className="flex justify-between">
+				<section className="w-full mt-10 lg:mt-0 lg:w-[850px]">
+					<article className="grid grid-cols-2 md:grid-cols-3 space-y-6 lg:space-y-0 lg:space-x-24">
 						<section className="flex flex-col gap-y-3" onClick={scrollTop}>
 							<Link to="/cars" className="text-[18px] uppercase">
 								{t("link1")}
@@ -114,7 +114,7 @@ export default function Footer() {
 						</section>
 					</article>
 
-					<article className="text-gray-400 text-[15px] flex justify-between items-center mt-10 py-6 border-t border-gray-500">
+					<article className="text-gray-400 text-[15px] flex justify-between mt-10 py-6 border-t border-gray-500">
 						<p>
 							{t("footer-term")} <br /> {t("footer-detail-p1")}
 						</p>

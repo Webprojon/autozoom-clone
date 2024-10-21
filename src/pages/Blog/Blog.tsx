@@ -36,27 +36,30 @@ export default function Blog() {
 
 	return (
 		<main className="bg-[#1E1F27]">
-			<article className="w-[1248px] mx-auto text-white py-8">
+			<article className="max-w-[1248px] mx-auto text-white py-8 px-4 lg:px-0">
 				<h1 className="leading-none uppercase text-[29px] font-semibold">
 					{t("blog")}
 				</h1>
 
-				<article className="bg-[#272933] p-8 mt-10 w-[1248px] space-y-12">
+				<article className="bg-[#272933] p-8 mt-10 mx-auto sm:max-w-[700px] md:max-w-[1248px] space-y-12">
 					{blogPosts?.map((blog) => (
-						<section key={blog.id} className="flex space-x-12">
+						<section
+							key={blog.id}
+							className="flex flex-col md:flex-row md:space-x-12"
+						>
 							<img
 								alt="car blog imgs"
-								className="w-[220px] h-[30vh] rounded-md"
+								className="w-full lg:w-[220px] h-[30vh] xs:h-[40vh] lg:h-[30vh] rounded-md"
 								src={blog.imgSrc}
 							/>
 							<div className="flex flex-col justify-between">
 								<Link
 									to={`/blog_info/${blog.id}`}
-									className="font-semibold text-[27px] leading-8"
+									className="font-semibold text-[20px] sm:text-[27px] leading-8"
 								>
 									{blog.title}
 								</Link>
-								<p className="text-[18px]">{blog.description}</p>
+								<p className="text-[18px] py-6 md:py-0">{blog.description}</p>
 								<div className="flex justify-between">
 									<span className="text-gray-400">{blog.date}</span>
 									<Link to={`/blog_info/${blog.id}`}>

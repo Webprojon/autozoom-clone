@@ -1,8 +1,8 @@
 import { FiSearch } from "react-icons/fi";
 import { useState } from "react";
-import { useGlobalContext } from "../context/global-context";
+import { useGlobalContext } from "../../context/global-context";
 import { Link } from "react-router-dom";
-import { scrollTop } from "../lib/hooks";
+import { scrollTop } from "../../lib/hooks";
 
 export default function HeaderInput() {
 	const [inputValue, setInputValue] = useState("");
@@ -24,7 +24,7 @@ export default function HeaderInput() {
 	);
 
 	return (
-		<section className="relative text-white">
+		<section className="relative text-white hidden sm:block">
 			<input
 				type="text"
 				placeholder="Search..."

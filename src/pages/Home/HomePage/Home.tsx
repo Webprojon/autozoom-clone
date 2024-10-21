@@ -44,83 +44,61 @@ export default function Home() {
 		fetchData();
 	}, []);
 
+	const slideImgs = [
+		"https://www.autozoomrental.com/static/media/xUnlimited-mileage.png.pagespeed.ic.cCWSKu-GPp.896ca2cf44c5787d1898.png",
+		"https://www.autozoomrental.com/static/media/audi.c4adb12ac6dec846adc3.png",
+		"https://www.autozoomrental.com/static/media/mersedez.efa884d1c86e12f4fb0f.png",
+		"https://www.autozoomrental.com/static/media/rolsroys.500642b0161c40ebfcdc.png",
+	];
+
 	return (
-		<>
-			<main id="reviews" className="home-bg flex flex-col items-center">
-				<section className="text-white tracking-wide w-[680px] mt-10 flex flex-col items-center justify-center text-center">
-					<h1 className="w-[560px] text-[44px] font-medium font-serif leading-[3.5rem] tracking-widest">
+		<main>
+			<section id="reviews" className="home-bg flex flex-col items-center">
+				<section className="mx-4 lg:mx-0 text-white tracking-wide lg:w-[680px] mt-10 flex flex-col items-center justify-center text-center">
+					<h1 className="lg:w-[560px] font-medium font-serif leading-8 sm:leading-[3.5rem] tracking-widest text-[20px] sm:text-[44px]">
 						{t("home-h1")}
 					</h1>
-					<p className="text-zinc-300 text-lg pt-2">{t("home-p")}</p>
+					<p className="text-zinc-300 sm:text-[20px] pt-2">{t("home-p")}</p>
 
-					<div className="font-medium flex items-center space-x-3 mt-6 text-[20px] cursor-pointer group">
+					<div className="font-medium flex items-center space-x-3 mt-6 sm:text-[20px] cursor-pointer group">
 						<span onClick={() => location.reload()}>{t("home-span")}</span>
 						<CgChevronRightO className="size-7 group-hover:translate-x-1 transition-all" />
 					</div>
 				</section>
 
-				<article className="h-[55vh] mt-16 w-[1500px] flex justify-center items-center">
-					<Swiper
-						effect={"coverflow"}
-						centeredSlides={true}
-						loop={true}
-						spaceBetween={800}
-						slidesPerView={"auto"}
-						modules={[EffectCoverflow, Autoplay]}
-						onInit={handleSwiperInit}
-						autoplay={{
-							delay: 4500,
-							disableOnInteraction: false,
-						}}
-						coverflowEffect={{
-							rotate: 0,
-							stretch: 0,
-							depth: 200,
-							modifier: 5,
-						}}
-					>
-						<SwiperSlide className="w-[700px]">
+				<Swiper
+					className="mt-16 w-full"
+					effect={"coverflow"}
+					centeredSlides={true}
+					loop={true}
+					spaceBetween={800}
+					slidesPerView={"auto"}
+					modules={[EffectCoverflow, Autoplay]}
+					onInit={handleSwiperInit}
+					autoplay={{
+						delay: 4000,
+						disableOnInteraction: false,
+					}}
+					coverflowEffect={{
+						rotate: 0,
+						stretch: 0,
+						depth: 200,
+						modifier: 5,
+					}}
+				>
+					{slideImgs.map((img, index) => (
+						<SwiperSlide key={index} className="lg:w-[700px]">
 							<Link to="/cars">
-								<img
-									alt="slide_image"
-									src="https://www.autozoomrental.com/static/media/xUnlimited-mileage.png.pagespeed.ic.cCWSKu-GPp.896ca2cf44c5787d1898.png"
-								/>
+								<img alt="slide_image" src={img} />
 							</Link>
 						</SwiperSlide>
+					))}
+				</Swiper>
 
-						<SwiperSlide className="w-[700px]">
-							<Link to="/cars">
-								<img
-									alt="slide_image"
-									src="https://www.autozoomrental.com/static/media/audi.c4adb12ac6dec846adc3.png"
-								/>
-							</Link>
-						</SwiperSlide>
-
-						<SwiperSlide className="w-[700px]">
-							<Link to="/cars">
-								<img
-									alt="slide_image"
-									src="https://www.autozoomrental.com/static/media/mersedez.efa884d1c86e12f4fb0f.png"
-								/>
-							</Link>
-						</SwiperSlide>
-
-						<SwiperSlide className="w-[700px]">
-							<Link to="/cars">
-								<img
-									alt="slide_image"
-									src="https://www.autozoomrental.com/static/media/rolsroys.500642b0161c40ebfcdc.png"
-								/>
-							</Link>
-						</SwiperSlide>
-					</Swiper>
-				</article>
-
-				<Marquee className="my-10 max-w-[1248px] mx-auto">
+				<Marquee className="my-14 max-w-[1248px] mx-auto">
 					<article className="text-white max-w-[1248px] mx-auto">
 						<section>
-							<Swiper slidesPerView={7}>
+							<Swiper slidesPerView={8}>
 								{brands.map((brand: CategoryType) => (
 									<SwiperSlide key={brand.id}>
 										<Link
@@ -130,7 +108,7 @@ export default function Home() {
 										>
 											<img
 												alt={brand.title}
-												className="object-cover h-[10vh]"
+												className="object-cover h-[7vh] lg:h-[10vh]"
 												src={`https://api.autozoomrental.com/api/uploads/images/${brand.image_src}`}
 											/>
 											<span className="font-bold opacity-70">
@@ -143,12 +121,12 @@ export default function Home() {
 						</section>
 					</article>
 				</Marquee>
-			</main>
+			</section>
 
 			<CarsHome />
 			<Services />
 			<Rules />
 			<FAQPage />
-		</>
+		</main>
 	);
 }

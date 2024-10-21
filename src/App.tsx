@@ -1,7 +1,7 @@
 import { GlobalContextProvider } from "./context/global-context";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import Home from "./pages/Home/HomePage/Home";
 import { Route, Routes } from "react-router-dom";
 import CarDetail from "./pages/Home/CarsPage/Cars-info";
