@@ -1,6 +1,6 @@
 import { initReactI18next } from "react-i18next";
 import Backend from "i18next-http-backend";
-import languageDetector from "i18next-browser-languageDetector";
+//import languageDetector from "i18next-browser-languageDetector";
 import i18next from "i18next";
 import enTranslation from "../public/locales/en.json";
 import ruTranslation from "../public/locales/ru.json";
@@ -12,7 +12,7 @@ const language =
 
 i18next
 	.use(Backend)
-	.use(languageDetector)
+	//.use(languageDetector)
 	.use(initReactI18next)
 	.init({
 		fallbackLng: "en",
