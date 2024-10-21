@@ -49,13 +49,13 @@ export default function Blog() {
 						>
 							<img
 								alt="car blog imgs"
-								className="w-full lg:w-[220px] h-[30vh] xs:h-[40vh] lg:h-[30vh] rounded-md"
+								className="w-full lg:w-[220px] h-[28vh] xs:h-[40vh] lg:h-[30vh] rounded-md"
 								src={blog.imgSrc}
 							/>
 							<div className="flex flex-col justify-between">
 								<Link
 									to={`/blog_info/${blog.id}`}
-									className="font-semibold text-[20px] sm:text-[27px] leading-8"
+									className="font-semibold text-[18px] sm:text-[27px] leading-7 mt-7"
 								>
 									{blog.title}
 								</Link>

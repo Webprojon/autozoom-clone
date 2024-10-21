@@ -140,7 +140,7 @@ export default function ServiceDetail() {
 	return (
 		<main className="bg-[#1E1F27] px-4 lg:px-0">
 			<section className="max-w-[1248px] mx-auto text-white py-8 tracking-wide">
-				<h1 className="text-[29px] font-medium leading-9 lg:leading-none mb-8">
+				<h1 className="text-[18px] lg:text-[29px] font-medium leading-10 lg:leading-none mb-8">
 					{t("service-detail-h1")}
 				</h1>
 
@@ -150,7 +150,7 @@ export default function ServiceDetail() {
 							<img
 								alt="Tour Image"
 								src={detail.imgSrc}
-								className="rounded-t-lg h-[40vh] w-[100%]"
+								className="rounded-t-lg h-[29vh] lg:h-[40vh] w-[100%]"
 							/>
 							<div className="bg-[#2D2E34] pt-3 px-5 pb-6 rounded-b-lg">
 								<h2 className="text-[25px] font-medium leading-none">

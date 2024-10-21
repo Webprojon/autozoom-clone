@@ -34,8 +34,12 @@ export default function Services() {
 					<section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-6">
 						{services?.map((service) => (
 							<div key={service.title} className="lg:w-[370px]">
-								<img alt="service img" src={service.imgSrc} />
-								<h2 className="my-6 text-[24px] leading-[1.8rem] font-medium">
+								<img
+									alt="service img"
+									src={service.imgSrc}
+									className="rounded-md"
+								/>
+								<h2 className="my-6 text-[18px] lg:text-[24px] leading-[1.9rem] font-medium">
 									{service.title}
 								</h2>
 								<p className="text-[18px] line-clamp-2">

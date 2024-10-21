@@ -40,7 +40,9 @@ export default function Footer() {
 							src="https://www.autozoomrental.com/static/media/logo1.cd0ee2ea64bdb4e351d6eb2c72171d12.svg"
 						/>
 					</Link>
-					<h1 className="font-bold text-[30px] leading-9">{t("footer-h1")}</h1>
+					<h1 className="font-bold text-[22px] lg:text-[30px] leading-9">
+						{t("footer-h1")}
+					</h1>
 					<p className="text-gray-400">{t("footer-p")}</p>
 					<button
 						onClick={scrollTop}

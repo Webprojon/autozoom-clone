@@ -37,7 +37,7 @@ export default function CarsHome() {
 				>
 					<main>
 						<section className="flex text-white items-center justify-between">
-							<h2 className="uppercase leading-none text-[18px] md:text-[30px]">
+							<h2 className="uppercase leading-none text-[17px] sm:text-[30px]">
 								{CorrectingText(
 									language === "ru" ? category.name_ru : category.name_en,
 								)}{" "}
@@ -48,7 +48,7 @@ export default function CarsHome() {
 								onClick={scrollTop}
 								className="group cursor-pointer flex items-center gap-x-3"
 							>
-								<span className="xs:text-[20px] sm:text-[21px] font-medium">
+								<span className="text-[17px] xs:text-[20px] sm:text-[21px] font-medium">
 									{t("cars-home-span")}
 								</span>
 								<CgChevronRightO className="size-7 group-hover:translate-x-1 transition-all" />

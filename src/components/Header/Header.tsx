@@ -98,14 +98,14 @@ export default function Header() {
 							src="https://static.vecteezy.com/system/resources/thumbnails/007/910/760/small_2x/united-kingdom-flag-rounded-icon-uk-flag-union-jack-vector.jpg"
 							alt="English flag"
 							onClick={() => handleChangeLanguage("en")}
-							className="w-7 hover:scale-105 transition-all custom-shadow rounded-full"
+							className="w-8 hover:scale-105 transition-all custom-shadow rounded-full"
 						/>
 
 						<img
 							src="https://vectorflags.s3.amazonaws.com/flags/ru-circle-01.png"
 							alt="Russian flag"
 							onClick={() => handleChangeLanguage("ru")}
-							className="w-7 hover:scale-105 transition-all custom-shadow rounded-full"
+							className="w-8 hover:scale-105 transition-all custom-shadow rounded-full"
 						/>
 					</div>
 
@@ -114,7 +114,7 @@ export default function Header() {
 					<Link to="/" onClick={handleClick}>
 						<img
 							alt="car rental logo"
-							className="w-[100px]"
+							className="w-[90px] lg:w-[100px]"
 							src="https://www.autozoomrental.com/static/media/logo1.cd0ee2ea64bdb4e351d6eb2c72171d12.svg"
 						/>
 					</Link>
@@ -122,7 +122,7 @@ export default function Header() {
 
 				<TfiMenu
 					onClick={handleMenuToggle}
-					className="size-10 text-white lg:hidden"
+					className="size-9 text-white lg:hidden"
 				/>
 
 				<section className="text-white uppercase space-x-10 font-medium tracking-wide hidden lg:block">

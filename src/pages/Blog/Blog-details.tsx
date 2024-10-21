@@ -62,7 +62,7 @@ export default function BlogDetails() {
 					<img
 						alt="blog imgs"
 						src={detail.imgSrc}
-						className="w-[100%] h-[40vh] sm:h-[50vh] md:h-[78vh] object-cover rounded-lg"
+						className="w-[100%] h-[32vh] sm:h-[50vh] md:h-[78vh] object-cover rounded-lg"
 					/>
 					<p className="text-[18px]">{detail.secondDescription}</p>
 				</article>

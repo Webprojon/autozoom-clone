@@ -57,7 +57,7 @@ export default function ResponsiveMenu() {
 			<section className="flex flex-col pl-16 pr-5 pt-9 h-screen tracking-widest text-white bg-[#0B0B0B]">
 				<MdOutlineClose
 					onClick={handleMenuToggle}
-					className="size-11 self-end lg:hidden"
+					className="size-10 self-end lg:hidden"
 				/>
 				<article className="flex flex-col space-y-9 mt-10 text-[23px]">
 					{links.map((link) => (
