@@ -31,7 +31,7 @@ export default defineConfig({
 					},
 				],
 				theme_color: "#181818",
-				background_color: "#e8eac2",
+				background_color: "#111219",
 				display: "standalone",
 				scope: "/",
 				start_url: "/",
@@ -40,8 +40,3 @@ export default defineConfig({
 		}),
 	],
 });
-
-// https://vitejs.dev/config/
-//export default defineConfig({
-//	plugins: [react()],
-//});
