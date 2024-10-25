@@ -67,7 +67,7 @@ export default function Home() {
 				</section>
 
 				<Swiper
-					className="mt-16 w-full"
+					className="mt-16 w-[94%]"
 					effect={"coverflow"}
 					centeredSlides={true}
 					loop={true}
