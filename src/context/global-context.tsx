@@ -13,6 +13,8 @@ export interface GlobalContextType {
 	setData: React.Dispatch<React.SetStateAction<CategoryType[]>>;
 	isHovered: boolean;
 	setIsHovered: React.Dispatch<React.SetStateAction<boolean>>;
+	openFilterOptions: boolean;
+	setOpenFilterOptions: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
@@ -25,6 +27,7 @@ export const GlobalContextProvider: React.FC<GlobalProviderProps> = ({
 	children,
 }) => {
 	// Cars Category
+	const [openFilterOptions, setOpenFilterOptions] = useState(false);
 	const [data, setData] = useState<CategoryType[]>([]);
 	const [isHovered, setIsHovered] = useState(false);
 
@@ -40,7 +43,16 @@ export const GlobalContextProvider: React.FC<GlobalProviderProps> = ({
 	}, []);
 
 	return (
-		<GlobalContext.Provider value={{ data, setData, isHovered, setIsHovered }}>
+		<GlobalContext.Provider
+			value={{
+				data,
+				setData,
+				isHovered,
+				setIsHovered,
+				openFilterOptions,
+				setOpenFilterOptions,
+			}}
+		>
 			{children}
 		</GlobalContext.Provider>
 	);

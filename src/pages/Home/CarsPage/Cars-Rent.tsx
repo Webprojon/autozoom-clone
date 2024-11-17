@@ -1,16 +1,11 @@
 import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { VscSettings } from "react-icons/vsc";
 import { useGlobalContext } from "../../../context/global-context";
-import { cardDetails, rentOptions } from "../../../lib/hooks";
-import { CategoryType } from "../../../lib/types";
+import { cardDetails } from "../../../lib/hooks";
+import SideBar from "./SideBar";
 
 export default function CarsRent() {
-	const [checkboxCategories, setCheckboxCategories] = useState([]);
-	const [checkboxBrands, setCheckboxBrands] = useState([]);
-	const [checkboxModels, setCheckboxModels] = useState([]);
-	const [selectedModel, setSelectedModel] = useState("");
-	const [openFilterOptions, setOpenFilterOptions] = useState(false);
+	const { openFilterOptions, setOpenFilterOptions } = useGlobalContext();
 	const { data } = useGlobalContext();
 	const { id } = useParams();
 
@@ -23,102 +18,10 @@ export default function CarsRent() {
 	const filtered = filteringCars.flatMap((item) => item);
 	const allData = carData ? carData.cars : filtered;
 
-	useEffect(() => {
-		const fetchCheckboxData = async () => {
-			try {
-				const [categoriesResponse, brandsResponse, modelResponse] =
-					await Promise.all([
-						fetch(`https://api.autozoomrental.com/api/categories`),
-						fetch(`https://api.autozoomrental.com/api/brands`),
-						fetch(`https://api.autozoomrental.com/api/models`),
-					]);
-
-				const categoriesData = await categoriesResponse.json();
-				const brandsData = await brandsResponse.json();
-				const modelData = await modelResponse.json();
-
-				setCheckboxCategories(categoriesData.data);
-				setCheckboxBrands(brandsData.data);
-				setCheckboxModels(modelData.data);
-			} catch (error) {
-				console.error("Error fetching data:", error);
-			}
-		};
-
-		fetchCheckboxData();
-	}, []);
-
-	const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-		setSelectedModel(event.target.value);
-	};
-
 	return (
 		<main className="max-w-[1540px] bg-[#1E1F27] tracking-wide">
 			<section className="text-white flex gap-x-6">
-				<aside
-					className={`bg-[#272933] lg:w-[455px] py-12 px-7
-					${openFilterOptions ? "block w-full" : "hidden"} md:block`}
-				>
-					<h1 className="leading-none text-[27px] font-medium">Filter By</h1>
-					<form className="flex flex-col gap-y-3">
-						<article>
-							<p className="text-[22px] py-3">Offers</p>
-							{rentOptions.map((option) => (
-								<section key={option.id} className="flex gap-x-3 mb-2 text-lg">
-									<input id={option.id} type="checkbox" />
-									<label htmlFor={option.id}>{option.label}</label>
-								</section>
-							))}
-						</article>
-
-						<article>
-							<p className="text-[22px] py-3">Car type</p>
-							{checkboxCategories.map((cartype: CategoryType) => (
-								<section key={cartype.id} className="flex gap-x-3 mb-2 text-lg">
-									<input id={cartype.id} type="checkbox" />
-									<label htmlFor={cartype.id}>{cartype.name_en}</label>
-								</section>
-							))}
-						</article>
-
-						<article>
-							<p className="text-[22px] py-3">Brand</p>
-							{checkboxBrands.map((brand: CategoryType) => (
-								<section key={brand.id} className="flex gap-x-3 mb-2 text-lg">
-									<input id={brand.id} type="checkbox" />
-									<label htmlFor={brand.id}>{brand.title}</label>
-								</section>
-							))}
-						</article>
-
-						<article>
-							<p className="text-[22px] py-3">Model</p>
-							<select
-								value={selectedModel}
-								onChange={handleChange}
-								className="text-black w-full outline-none px-4 py-3 rounded-lg no-scrollbar"
-							>
-								{checkboxModels.map((model: CategoryType) => (
-									<option key={model.id} value={model.name}>
-										{model.name}
-									</option>
-								))}
-							</select>
-						</article>
-
-						<article className="mt-6 flex justify-between">
-							<button
-								type="reset"
-								className="border rounded-lg px-12 py-5 text-xl"
-							>
-								Reset
-							</button>
-							<button className="bg-[#009A00] rounded-lg px-10 py-5 text-xl">
-								Apply filter
-							</button>
-						</article>
-					</form>
-				</aside>
+				<SideBar />
 
 				<section
 					className={`pt-10 px-4 xs:px-0 mx-auto lg:mx-0 max-w-[400px] xs:max-w-[600px] sm:max-w-[800px] md:max-w-[1000px] lg:max-w-[1248px]

@@ -48,17 +48,6 @@ export default function CarDetail() {
 		return <p>Car not found</p>;
 	}
 
-	// Simple Way !!!
-	//const carsData = data.map((items) => {
-	//	return items.cars.map((item) => {
-	//		return item;
-	//	});
-	//});
-	//const reducedCars = carsData.reduce((acc, item) => {
-	//	return acc.concat(item);
-	//}, []);
-
-	// Best Way !!!
 	const reducedCars = data.flatMap((items) => items.cars);
 
 	// Send message to the bot

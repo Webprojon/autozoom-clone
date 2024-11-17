@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Car, CarImage } from "./types";
 import { FaTelegram, FaWhatsapp } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 // Scrolling to top
 export const scrollTop = () => {
@@ -77,3 +78,29 @@ export const rentOptions = [
 	{ id: "8", label: "RENT FERRARI DUBAI" },
 	{ id: "9", label: "4 DAYS RENT = 5000 AED🔥 ALL INCLUSIVE" },
 ];
+
+// Brand fetching
+export function useFetch(url: string) {
+	const [data, setData] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			setIsLoading(true);
+
+			try {
+				const response = await fetch(url);
+				const result = await response.json();
+				setData(result.data);
+			} catch (error) {
+				console.log(error);
+			} finally {
+				setIsLoading(false);
+			}
+		};
+
+		fetchData();
+	}, [url]);
+
+	return { data, setData, isLoading };
+}

@@ -1,28 +1,14 @@
-import { useEffect, useState } from "react";
 import { useGlobalContext } from "../../context/global-context";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import { CategoryType } from "../../lib/types";
-import { scrollTop } from "../../lib/hooks";
+import { scrollTop, useFetch } from "../../lib/hooks";
 
 export default function Brand() {
 	const { setIsHovered } = useGlobalContext();
-	const [brands, setBrands] = useState([]);
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const response = await axios.get(
-					"https://api.autozoomrental.com/api/brands",
-				);
-				setBrands(response.data.data);
-			} catch (error) {
-				console.log(error);
-			}
-		};
-
-		fetchData();
-	}, []);
+	const { data, isLoading } = useFetch(
+		"https://api.autozoomrental.com/api/brands",
+	);
 
 	const handleClickLink = () => {
 		setIsHovered(false);
@@ -35,8 +21,13 @@ export default function Brand() {
 			onMouseLeave={() => setIsHovered(false)}
 			className="absolute right-10 top-[4.6rem] w-[800px] rounded-[20px] bg-[#272933]"
 		>
-			<article className="grid grid-cols-3 space-y-5 p-6">
-				{brands?.map((brand: CategoryType) => (
+			{isLoading && (
+				<div className="text-center text-white text-[20px] pt-3">
+					Loading...
+				</div>
+			)}
+			<article className="grid grid-cols-3 space-y-5 px-6 py-2">
+				{data?.map((brand: CategoryType) => (
 					<Link
 						to={`cars/${brand.id}`}
 						className="flex items-center space-x-3"

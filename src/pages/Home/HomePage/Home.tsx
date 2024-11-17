@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperClass } from "swiper/types";
 import "swiper/css";
@@ -6,19 +5,17 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/autoplay";
 import { EffectCoverflow, Autoplay } from "swiper/modules";
 import { CgChevronRightO } from "react-icons/cg";
-import axios from "axios";
 import Marquee from "react-fast-marquee";
 import { CategoryType } from "../../../lib/types";
 import { Link } from "react-router-dom";
 import FAQPage from "../FAQPage/FAQ";
 import Services from "../../Services/Services";
 import CarsHome from "../CarsPage/Cars-Home";
-import { scrollTop } from "../../../lib/hooks";
+import { scrollTop, useFetch } from "../../../lib/hooks";
 import Rules from "../Rules/Rules";
 import { useTranslation } from "react-i18next";
 
 export default function Home() {
-	const [brands, setBrands] = useState([]);
 	const { t } = useTranslation();
 
 	const handleSwiperInit = (swiper: SwiperClass) => {
@@ -29,20 +26,7 @@ export default function Home() {
 		});
 	};
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const response = await axios.get(
-					"https://api.autozoomrental.com/api/brands",
-				);
-				setBrands(response.data.data);
-			} catch (error) {
-				console.log(error);
-			}
-		};
-
-		fetchData();
-	}, []);
+	const { data } = useFetch("https://api.autozoomrental.com/api/brands");
 
 	const slideImgs = [
 		"https://www.autozoomrental.com/static/media/xUnlimited-mileage.png.pagespeed.ic.cCWSKu-GPp.896ca2cf44c5787d1898.png",
@@ -99,7 +83,7 @@ export default function Home() {
 					<article className="text-white max-w-[1248px] mx-auto">
 						<section>
 							<Swiper slidesPerView={8}>
-								{brands.map((brand: CategoryType) => (
+								{data.map((brand: CategoryType) => (
 									<SwiperSlide key={brand.id}>
 										<Link
 											to={`cars/${brand.id}`}
